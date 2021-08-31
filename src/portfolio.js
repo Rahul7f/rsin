@@ -119,7 +119,7 @@ const educationInfo = {
     {
       schoolName: "Dronacharya College of Engineering",
       logo: require("./assets/images/mdu.png"),
-      subHeader: "Master of Science in Computer Science",
+      subHeader: "Bachelor of Science in Computer Science",
       duration: "September 2020 - Present",
       // desc: "Participated in the research of XXX and published 3 papers.",
       // descBullets: [
