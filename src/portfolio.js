@@ -239,7 +239,7 @@ const bigProjects = {
     {
       image: require("./assets/images/netflix_clone.png"),
       projectName: "Netflix Clone",
-      projectDesc: "Watch your favorite movie and series trailer",
+      projectDesc: "Watch your Favourite movie and series trailer",
       footerLink: [
         {
           name: "Visit Website",
