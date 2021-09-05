@@ -29,6 +29,7 @@ const socialMediaLinks = {
   gmail: "rahulsingh.83748@gmail.com",
   facebook: "https://www.facebook.com/rsin2105/",
   instagram:"https://www.instagram.com/rsin_2105/",
+  twitter:"https://twitter.com/_rsin",
   // medium: "https://medium.com/@rsin2105",
   stackoverflow: "https://stackoverflow.com/users/14077964/rahul-singh",
   // Instagram and Twitter are also supported in the links!
@@ -42,9 +43,9 @@ const skillsSection = {
   subTitle: "CRAZY FULL STACK DEVELOPER WHO WANTS TO EXPLORE EVERY TECH STACK",
   skills: [
     emoji(
-      "⚡ Develop highly interactive Front end / User Interfaces for your web and mobile applications"
+      "⚡ Develop highly interactive Front end / User Interfaces of web and mobile applications"
     ),
-    emoji("⚡ Design UI for Mobile and Web application"),
+    emoji("⚡ Design UI of Mobile and Web application"),
     emoji(
       "⚡ Integration of third party services such as Firebase / AWS / Digital Ocean"
     )
@@ -119,7 +120,7 @@ const educationInfo = {
     {
       schoolName: "Dronacharya College of Engineering",
       logo: require("./assets/images/mdu.png"),
-      subHeader: "Bachelor of Science in Computer Science",
+      subHeader: "Bachelor’s of Technology in Computer Science",
       duration: "September 2020 - Present",
       // desc: "Participated in the research of XXX and published 3 papers.",
       // descBullets: [
@@ -173,7 +174,7 @@ const workExperiences = {
       company: "INDRADHANU SOFTWARE LLP",
       companylogo: require("./assets/images/faatak.png"),
       date: "June 2021 – Present",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      // desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       descBullets: [
         "Reduce app size by 1MB",
         "Work with API'S using retrofit",
@@ -187,7 +188,7 @@ const workExperiences = {
       company: "Spark Foundaton PVT. LTD",
       companylogo: require("./assets/images/spark.png"),
       date: "June 2021 – 1mo",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      // desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       descBullets: [
         "Worked on android application for a banking service",
         "Designed the UI & functionalities",
@@ -199,7 +200,7 @@ const workExperiences = {
       company: "Gurugram police",
       companylogo: require("./assets/images/gPolice.png"),
       date: "June 2021 – 1mo",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      // desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       descBullets: [
         "Learn about cyber security",
         "Work on verious case studies",
@@ -221,33 +222,69 @@ const openSource = {
 
 const bigProjects = {
   title: "Big Projects",
-  subtitle: "SOME STARTUPS AND COMPANIES THAT I HELPED TO CREATE THEIR TECH",
+  subtitle: "MY SOME BIG PROJECTS",
   projects: [
     {
-      image: require("./assets/images/saayaHealthLogo.webp"),
-      projectName: "Saayahealth",
-      projectDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      image: require("./assets/images/tweedios.png"),
+      projectName: "Tweedios",
+      projectDesc: "Ads Free Video Downloader for Twitter helps you download video or gif.",
       footerLink: [
         {
-          name: "Visit Website",
-          url: "http://saayahealth.com/"
+          name: "Download Now",
+          url: "https://play.google.com/store/apps/details?id=com.monkdevs.tweedios"
         }
         //  you can add extra buttons here.
       ]
     },
     {
-      image: require("./assets/images/nextuLogo.webp"),
-      projectName: "Nextu",
-      projectDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      image: require("./assets/images/netflix_clone.png"),
+      projectName: "Netflix Clone",
+      projectDesc: "Watch your favorite movie and series trailer",
       footerLink: [
         {
           name: "Visit Website",
-          url: "http://nextu.se/"
+          url: "https://netflix-clone-94af8.web.app/"
+        }
+        //  you can add extra buttons here.
+      ]
+    },
+    {
+      image: require("./assets/images/coviHelp.png"),
+      projectName: "CoviHelp",
+      projectDesc: "Connect food givers to needy people and provide information about vaccine centers",
+      footerLink: [
+        {
+          name: "Github",
+          url: "https://github.com/Rahul7f/Covihelp"
+        }
+      ]
+    },
+
+    {
+      image: require("./assets/images/videoCall.png"),
+      projectName: "KIKO",
+      projectDesc: "group video calling and video call with stranger",
+      footerLink: [
+        {
+          name: "Visit Website",
+          url: "https://kiko-video-chat.herokuapp.com/#"
+        }
+      ]
+    },
+
+    {
+      image: require("./assets/images/early.png"),
+      projectName: "EarlyBird",
+      projectDesc: "open chat platofrm",
+      footerLink: [
+        {
+          name: "Visit Website",
+          url: "https://young-earth-35736.herokuapp.com/"
         }
       ]
     }
   ],
-  display: false // Set false to hide this section, defaults to true
+  display: true // Set false to hide this section, defaults to true
 };
 
 // Achievement Section
@@ -305,7 +342,7 @@ const achievementSection = {
       ]
     }
   ],
-  display: true // Set false to hide this section, defaults to true
+  display: false // Set false to hide this section, defaults to true
 };
 
 // Blogs Section
@@ -329,7 +366,7 @@ const blogSection = {
         "React is a JavaScript library for building User Interface. It is maintained by Facebook and a community of individual developers and companies."
     }
   ],
-  display: true // Set false to hide this section, defaults to true
+  display: false // Set false to hide this section, defaults to true
 };
 
 // Talks Sections
@@ -348,7 +385,7 @@ const talkSection = {
       event_url: "https://www.facebook.com/events/2339906106275053/"
     }
   ],
-  display: true // Set false to hide this section, defaults to true
+  display: false // Set false to hide this section, defaults to true
 };
 
 // Podcast Section
@@ -375,7 +412,7 @@ const contactInfo = {
 // Twitter Section
 
 const twitterDetails = {
-  userName: "twitter", //Replace "twitter" with your twitter username without @
+  userName: "_rsin", //Replace "twitter" with your twitter username without @
   display: false // Set true to display this section, defaults to false
 };
 
