@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delete Account - Stranger Chat</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      color: #333;
+      line-height: 1.7;
+      padding: 30px 16px;
+    }
+
+    .container {
+      max-width: 620px;
+      margin: auto;
+      background: #fff;
+      padding: 36px 40px;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 6px;
+    }
+
+    .logo span { color: #6c63ff; }
+
+    h1 {
+      font-size: 22px;
+      color: #1a1a2e;
+      margin: 20px 0 8px;
+    }
+
+    .meta {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #eee;
+    }
+
+    p { font-size: 14.5px; margin-bottom: 14px; }
+
+    h2 {
+      font-size: 15px;
+      color: #1a1a2e;
+      margin: 24px 0 10px;
+      padding-left: 10px;
+      border-left: 3px solid #6c63ff;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    ul li {
+      font-size: 14.5px;
+      margin-bottom: 6px;
+    }
+
+    .warning {
+      background: #fff5f5;
+      border-left: 4px solid #e53e3e;
+      padding: 12px 16px;
+      border-radius: 4px;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+
+    .highlight {
+      background: #f5f3ff;
+      border-left: 4px solid #6c63ff;
+      padding: 12px 16px;
+      border-radius: 4px;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+
+    .steps {
+      counter-reset: step;
+      list-style: none;
+      padding: 0;
+      margin-bottom: 14px;
+    }
+
+    .steps li {
+      counter-increment: step;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+      font-size: 14.5px;
+    }
+
+    .steps li::before {
+      content: counter(step);
+      background: #6c63ff;
+      color: #fff;
+      font-weight: 700;
+      font-size: 13px;
+      min-width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .email-box {
+      background: #1a1a2e;
+      color: #fff;
+      padding: 20px 24px;
+      border-radius: 8px;
+      margin: 24px 0;
+      font-size: 14px;
+    }
+
+    .email-box a {
+      color: #a78bfa;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .email-box .subject {
+      background: rgba(255,255,255,0.08);
+      padding: 8px 12px;
+      border-radius: 4px;
+      margin-top: 10px;
+      font-family: monospace;
+      font-size: 13px;
+      color: #e2e8f0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin-bottom: 14px;
+    }
+
+    th {
+      background: #f5f3ff;
+      color: #1a1a2e;
+      padding: 10px 12px;
+      text-align: left;
+      font-size: 13px;
+    }
+
+    td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #eee;
+      vertical-align: top;
+    }
+
+    .badge-deleted {
+      background: #fed7d7;
+      color: #c53030;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .badge-kept {
+      background: #fefcbf;
+      color: #744210;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 20px 18px; }
+      h1 { font-size: 19px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="logo">Stranger<span>Chat</span></div>
+  <p style="font-size:13px; color:#888; margin-bottom:0;">by Rsin Labs</p>
+
+  <h1>Request Account Deletion</h1>
+  <div class="meta">Last Updated: July 2025</div>
+
+  <p>You have the right to request deletion of your Stranger Chat account and associated data. Please read the information below before submitting your request.</p>
+
+  <div class="warning">
+    <strong>This action is permanent.</strong> Once your account is deleted, it cannot be recovered. All your points, friends, and profile data will be lost.
+  </div>
+
+  <h2>How to Request Deletion</h2>
+
+  <ol class="steps">
+    <li>Send an email to our support team using the address below.</li>
+    <li>Use the subject line exactly as shown.</li>
+    <li>Include your registered email address or Firebase User ID in the message body (if known).</li>
+    <li>We will process your request within <strong>7 business days</strong> and send a confirmation.</li>
+  </ol>
+
+  <div class="email-box">
+    <strong>Send your request to:</strong><br>
+    <a href="mailto:rsinlabs@gmail.com?subject=Account Deletion Request - Stranger Chat">rsinlabs@gmail.com</a>
+    <div class="subject">Subject: Account Deletion Request - Stranger Chat</div>
+  </div>
+
+  <h2>What Gets Deleted</h2>
+
+  <table>
+    <tr>
+      <th>Data</th>
+      <th>Action</th>
+      <th>Notes</th>
+    </tr>
+    <tr>
+      <td>Profile (name, photo, gender, preferences)</td>
+      <td><span class="badge-deleted">Deleted</span></td>
+      <td>Removed within 7 days</td>
+    </tr>
+    <tr>
+      <td>Points & rating</td>
+      <td><span class="badge-deleted">Deleted</span></td>
+      <td>Removed with account</td>
+    </tr>
+    <tr>
+      <td>Friends list</td>
+      <td><span class="badge-deleted">Deleted</span></td>
+      <td>Removed with account</td>
+    </tr>
+    <tr>
+      <td>FCM token & notification settings</td>
+      <td><span class="badge-deleted">Deleted</span></td>
+      <td>Removed with account</td>
+    </tr>
+    <tr>
+      <td>Firebase Auth account</td>
+      <td><span class="badge-deleted">Deleted</span></td>
+      <td>Sign-in access removed</td>
+    </tr>
+    <tr>
+      <td>Chat messages</td>
+      <td><span class="badge-kept">Retained</span></td>
+      <td>Retained for safety enforcement and legal compliance. May be disclosed to law enforcement if required.</td>
+    </tr>
+    <tr>
+      <td>Moderation & ban records</td>
+      <td><span class="badge-kept">Retained</span></td>
+      <td>Retained permanently for safety enforcement.</td>
+    </tr>
+    <tr>
+      <td>User reports filed against you</td>
+      <td><span class="badge-kept">Retained</span></td>
+      <td>Retained for investigation purposes.</td>
+    </tr>
+  </table>
+
+  <div class="highlight">
+    <strong>Note:</strong> Chat messages and moderation records are retained even after account deletion to comply with legal obligations and support law enforcement investigations where required. This is disclosed in our <a href="strangerchat_legal.html" style="color:#6c63ff;">Privacy Policy</a>.
+  </div>
+
+  <h2>Premium Subscriptions</h2>
+  <p>Deleting your account does <strong>not</strong> automatically cancel your Google Play subscription. Please cancel your subscription separately through the Google Play Store before requesting account deletion to avoid further charges.</p>
+
+  <h2>Questions</h2>
+  <p>For any questions about your data or this process, contact us at <a href="mailto:rsinlabs@gmail.com" style="color:#6c63ff;">rsinlabs@gmail.com</a>.</p>
+
+</div>
+
+</body>
+</html>
