@@ -3,189 +3,518 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy - Stranger Chat</title>
+  <title>Legal - Stranger Chat</title>
   <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-      line-height: 1.6;
-      background: #f8f8f8;
+      background: #f0f2f5;
       color: #333;
+      line-height: 1.7;
     }
-    h1, h2 {
-      color: #222;
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #1a1a2e;
+      display: flex;
+      gap: 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
+
+    nav button {
+      flex: 1;
+      padding: 14px 10px;
+      background: transparent;
+      color: #aaa;
+      border: none;
+      border-bottom: 3px solid transparent;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      transition: all 0.2s;
+    }
+
+    nav button.active {
+      color: #fff;
+      border-bottom: 3px solid #6c63ff;
+    }
+
+    nav button:hover {
+      color: #fff;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .page { display: none; }
+    .page.active { display: block; }
+
     .container {
-      max-width: 900px;
-      margin: auto;
+      max-width: 860px;
+      margin: 30px auto;
       background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      padding: 36px 40px;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
     }
-    a { color: #0066cc; }
+
+    h1 {
+      font-size: 26px;
+      color: #1a1a2e;
+      margin-bottom: 6px;
+    }
+
+    .meta {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #eee;
+    }
+
+    h2 {
+      font-size: 17px;
+      color: #1a1a2e;
+      margin: 28px 0 10px;
+      padding-left: 10px;
+      border-left: 3px solid #6c63ff;
+    }
+
+    h3 {
+      font-size: 15px;
+      color: #333;
+      margin: 18px 0 8px;
+    }
+
+    p { margin-bottom: 12px; font-size: 14.5px; }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 12px;
+    }
+
+    ul li {
+      margin-bottom: 6px;
+      font-size: 14.5px;
+    }
+
+    .highlight {
+      background: #f5f3ff;
+      border-left: 4px solid #6c63ff;
+      padding: 12px 16px;
+      border-radius: 4px;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+
+    .warning {
+      background: #fff5f5;
+      border-left: 4px solid #e53e3e;
+      padding: 12px 16px;
+      border-radius: 4px;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+
+    a { color: #6c63ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    hr { border: none; border-top: 1px solid #eee; margin: 24px 0; }
+
+    .contact-box {
+      background: #1a1a2e;
+      color: #fff;
+      padding: 20px 24px;
+      border-radius: 8px;
+      margin-top: 28px;
+      font-size: 14px;
+    }
+
+    .contact-box a { color: #a78bfa; }
+
+    @media (max-width: 600px) {
+      .container { padding: 20px 18px; margin: 16px; }
+      nav button { font-size: 11px; padding: 12px 6px; }
+      h1 { font-size: 21px; }
+    }
   </style>
 </head>
-
 <body>
-<div class="container">
 
-<h1>Privacy Policy for Stranger Chat</h1>
-<p><strong>Developer:</strong> RSIN<br>
-<strong>Last updated:</strong> February 2025</p>
+<nav>
+  <button class="active" onclick="showPage('privacy', this)">Privacy Policy</button>
+  <button onclick="showPage('terms', this)">Terms of Service</button>
+  <button onclick="showPage('child', this)">Child Safety</button>
+</nav>
 
-<p>
-This Privacy Policy describes how the mobile application <strong>“Stranger Chat”</strong> (the “App”), published by developer <strong>RSIN</strong>, collects, uses, and protects your information.  
-The App is intended strictly for adults <strong>18 years and older</strong>.
-</p>
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--                    PRIVACY POLICY                       -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="privacy" class="page active">
+  <div class="container">
+    <h1>Privacy Policy</h1>
+    <div class="meta">
+      <strong>Developer:</strong> Rsin Labs &nbsp;|&nbsp;
+      <strong>App:</strong> Stranger Chat &nbsp;|&nbsp;
+      <strong>Last Updated:</strong> July 2025
+    </div>
 
-<hr>
+    <p>This Privacy Policy explains how <strong>Rsin Labs</strong> ("we", "us", "our") collects, uses, stores, and protects your information when you use the <strong>Stranger Chat</strong> mobile application ("App"). By using the App, you agree to this policy.</p>
 
-<h2>1. Information We Collect</h2>
+    <div class="warning">
+      <strong>Age Restriction:</strong> Stranger Chat is strictly for users aged <strong>18 years and older</strong>. If you are under 18, you must not use this App.
+    </div>
 
-<h3>1.1 Anonymous Usage</h3>
-<p>
-Stranger Chat allows users to chat anonymously. We do <strong>not</strong> require your name, email, phone number, or personally identifiable information.
-</p>
+    <h2>1. Information We Collect</h2>
 
-<h3>1.2 Automatically Collected Data</h3>
-<ul>
-  <li>Device model & OS version</li>
-  <li>Crash logs & diagnostics</li>
-  <li>Approximate location (country only)</li>
-  <li>Usage analytics</li>
-</ul>
+    <h3>1.1 Account Information</h3>
+    <p>Depending on how you sign up, we collect:</p>
+    <ul>
+      <li><strong>Google Sign-In:</strong> Display name, email address, and profile photo provided by Google.</li>
+      <li><strong>Anonymous Sign-In:</strong> No personal information is collected. A random Firebase Auth UID is assigned.</li>
+    </ul>
 
-<h3>1.3 Chat Messages</h3>
-<p>
-Chat messages are stored temporarily in Firebase Firestore for real-time delivery.  
-Messages may be automatically scanned for policy violations (e.g., harmful content, CSAE).
-We do <strong>not</strong> store chat history permanently and do <strong>not</strong> sell or share chat content with third parties.
-</p>
+    <h3>1.2 Profile Data You Provide</h3>
+    <p>When you set up your profile, we store the following in Firebase Firestore:</p>
+    <ul>
+      <li>Display name and username</li>
+      <li>Gender and interest (matching preference)</li>
+      <li>Profile photo URL</li>
+      <li>Date of birth (used for age verification only)</li>
+      <li>Points balance and rating</li>
+      <li>Friend list and friend count</li>
+      <li>Blocked users list</li>
+      <li>FCM token (for push notifications)</li>
+      <li>Account creation date, last login, and last online timestamp</li>
+      <li>Notification preferences</li>
+    </ul>
 
-<h3>1.4 Reports & Safety Logs</h3>
-<p>
-User reports are stored to help enforce safety rules, investigate abuse, and ban violators.
-</p>
+    <h3>1.3 Chat Messages</h3>
+    <div class="highlight">
+      <strong>Important:</strong> Chat messages sent through Stranger Chat are <strong>stored permanently</strong> in Firebase Firestore. We retain messages to support safety enforcement, investigate reports of abuse or illegal activity, and comply with lawful requests from government authorities or law enforcement in the event of a crime. Messages are not sold, shared commercially, or used for advertising purposes.
+    </div>
 
-<hr>
+    <h3>1.4 Reports & Moderation Logs</h3>
+    <p>User reports, ban records, and moderation logs (including blocked message attempts) are stored permanently to enforce our community guidelines and support safety investigations.</p>
 
-<h2>2. How We Use Collected Information</h2>
-<ul>
-  <li>Enable anonymous chatting and real-time matching</li>
-  <li>Detect and prevent harmful or illegal behavior</li>
-  <li>Moderate content and enforce bans</li>
-  <li>Improve app performance, safety, and user experience</li>
-  <li>Support premium subscriptions</li>
-</ul>
+    <h3>1.5 Automatically Collected Data</h3>
+    <ul>
+      <li>Device model and operating system version</li>
+      <li>Crash logs and diagnostics (via Firebase Crashlytics)</li>
+      <li>Approximate location (country level only)</li>
+      <li>App usage analytics (via Firebase Analytics)</li>
+    </ul>
 
-<hr>
+    <hr>
 
-<h2>3. Child Safety & CSAE Zero-Tolerance Policy</h2>
+    <h2>2. How We Use Your Information</h2>
+    <ul>
+      <li>Enable anonymous and authenticated chatting and real-time matching</li>
+      <li>Verify that users meet the 18+ age requirement</li>
+      <li>Detect, investigate, and prevent harmful, abusive, or illegal behavior</li>
+      <li>Enforce bans and moderation actions</li>
+      <li>Deliver push notifications</li>
+      <li>Manage points, rewards, and premium subscriptions</li>
+      <li>Improve app performance and user experience</li>
+      <li>Comply with legal obligations and respond to lawful government or law enforcement requests</li>
+    </ul>
 
-<p>
-Stranger Chat is strictly for adults <strong>18+ only</strong>.  
-We enforce a <strong>zero-tolerance</strong> policy for Child Sexual Abuse and Exploitation (“CSAE”), including but not limited to:
-</p>
+    <hr>
 
-<ul>
-  <li>Child sexual abuse material (CSAM)</li>
-  <li>Child grooming</li>
-  <li>Sexualized chat involving or directed toward minors</li>
-  <li>Sharing or requesting images of minors</li>
-  <li>Predatory or harmful behavior toward minors</li>
-</ul>
+    <h2>3. Data Sharing</h2>
+    <p>We do <strong>not</strong> sell your personal data. We share data only in the following circumstances:</p>
+    <ul>
+      <li><strong>Firebase (Google):</strong> For authentication, database, cloud messaging, analytics, and crash reporting.</li>
+      <li><strong>Google AdMob:</strong> For displaying advertisements. AdMob may collect anonymous identifiers for ad delivery and frequency capping.</li>
+      <li><strong>Google Play Billing:</strong> For managing premium subscriptions. We do not store payment details.</li>
+      <li><strong>Law Enforcement:</strong> We will disclose data when required by law, court order, or to comply with a lawful government request — including in cases of suspected criminal activity.</li>
+      <li><strong>NCMEC:</strong> Confirmed Child Sexual Abuse Material (CSAM) is reported to the National Center for Missing & Exploited Children as required by law.</li>
+    </ul>
 
-<p><strong>If any CSAE is detected:</strong></p>
-<ul>
-  <li>Content is removed immediately</li>
-  <li>User is permanently banned</li>
-  <li>We report confirmed CSAM to the <strong>National Center for Missing & Exploited Children (NCMEC)</strong>
-      or relevant law enforcement, as required by law</li>
-</ul>
+    <hr>
 
-<p>
-Stranger Chat provides an in-app <strong>Report User</strong> feature to quickly report harmful or illegal content.
-Reports are reviewed and acted upon swiftly as part of our moderation process.
-</p>
+    <h2>4. Data Retention</h2>
+    <ul>
+      <li><strong>Chat messages:</strong> Stored permanently for safety and legal compliance purposes.</li>
+      <li><strong>User profiles:</strong> Retained while the account is active and for a reasonable period after deletion requests.</li>
+      <li><strong>Reports & moderation logs:</strong> Retained permanently for enforcement purposes.</li>
+      <li><strong>Analytics data:</strong> Retained per Firebase's default policies.</li>
+    </ul>
 
-<p>
-Our full Child Safety Standards can be found here:<br>
-<a href="child_abuse_policy.html">Child Safety & Anti-CSAE Policy</a>
-</p>
+    <hr>
 
-<hr>
+    <h2>5. Data Security</h2>
+    <p>We apply industry-standard security practices including Firebase security rules and encrypted data transmission. However, no online platform can guarantee absolute security. Users are encouraged to report any suspicious behavior immediately.</p>
 
-<h2>4. Third-Party Services</h2>
+    <hr>
 
-<h3>4.1 Firebase</h3>
-<ul>
-  <li>Anonymous authentication</li>
-  <li>Realtime messaging</li>
-  <li>Crashlytics</li>
-  <li>Analytics</li>
-</ul>
+    <h2>6. Your Rights</h2>
+    <p>You may contact us to request:</p>
+    <ul>
+      <li>Access to data we hold about you</li>
+      <li>Correction of inaccurate profile data</li>
+      <li>Account deletion (subject to retention obligations for safety and legal compliance)</li>
+      <li>Review of a ban or report</li>
+    </ul>
+    <p>Note: We may be unable to delete data that is required for active safety investigations or legal compliance.</p>
 
-<h3>4.2 Google AdMob</h3>
-<p>
-AdMob may collect anonymous identifiers for ad personalization or frequency capping.
-</p>
+    <hr>
 
-<h3>4.3 Google Play Billing</h3>
-<p>
-Used for managing premium subscriptions.  
-We do <strong>not</strong> store any payment details.
-</p>
+    <h2>7. Children's Privacy</h2>
+    <p>Stranger Chat is strictly for users <strong>18 years and older</strong>. We do not knowingly collect data from minors. If we become aware that a user is under 18, their account will be immediately terminated and their data removed. See our <strong>Child Safety Policy</strong> tab for full details.</p>
 
-<hr>
+    <hr>
 
-<h2>5. Data Security</h2>
-<p>
-We apply industry-standard security practices to protect user data; however, no online platform can guarantee absolute security.
-</p>
+    <h2>8. Third-Party Links</h2>
+    <p>The App may allow users to share social media handles. We are not responsible for the privacy practices of any third-party platforms.</p>
 
-<hr>
+    <hr>
 
-<h2>6. Data Retention</h2>
-<ul>
-  <li>Chat messages: temporary</li>
-  <li>Reports: stored for safety enforcement</li>
-  <li>Analytics: retained as per Firebase policies</li>
-</ul>
+    <h2>9. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy periodically. Continued use of the App after changes are posted constitutes acceptance of the updated policy.</p>
 
-<hr>
+    <hr>
 
-<h2>7. User Rights</h2>
-<p>You may request:</p>
-<ul>
-  <li>Removal of harmful or abusive reports involving you</li>
-  <li>Ban review</li>
-</ul>
+    <h2>10. Child Safety Contact (Required by Google Play)</h2>
+    <p>To report urgent CSAE concerns or for Google Play child safety notifications:</p>
+    <p><strong>Email:</strong> <a href="mailto:rsinlabs@gmail.com">rsinlabs@gmail.com</a></p>
 
-<p>Contact us using the email below.</p>
-
-<hr>
-
-<h2>8. Updates to This Policy</h2>
-<p>
-We may update this Privacy Policy periodically. Continued use of the App means acceptance of changes.
-</p>
-
-<hr>
-
-<h2>9. Child Safety Point of Contact (Required by Google)</h2>
-<p>
-To report urgent CSAE concerns or receive notifications from Google Play, contact our designated child safety representative:
-</p>
-<p><strong>Email:</strong> rsin7f@gmail.com</p>
-
-<hr>
-
-<h2>10. Contact Us</h2>
-<p>If you have questions or concerns about privacy or safety, contact:</p>
-<p><strong>Email:</strong> rsin7f@gmail.com</p>
-
+    <div class="contact-box">
+      <strong>Contact Us</strong><br><br>
+      Rsin Labs<br>
+      Email: <a href="mailto:rsinlabs@gmail.com">rsinlabs@gmail.com</a>
+    </div>
+  </div>
 </div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--                  TERMS OF SERVICE                       -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="terms" class="page">
+  <div class="container">
+    <h1>Terms of Service</h1>
+    <div class="meta">
+      <strong>Developer:</strong> Rsin Labs &nbsp;|&nbsp;
+      <strong>App:</strong> Stranger Chat &nbsp;|&nbsp;
+      <strong>Last Updated:</strong> July 2025
+    </div>
+
+    <p>These Terms of Service ("Terms") govern your use of the <strong>Stranger Chat</strong> mobile application ("App") operated by <strong>Rsin Labs</strong>. By creating an account or using the App, you agree to be bound by these Terms.</p>
+
+    <div class="warning">
+      <strong>You must be 18 years or older to use Stranger Chat.</strong> If you are under 18, you are not permitted to use this App under any circumstances.
+    </div>
+
+    <h2>1. Eligibility</h2>
+    <ul>
+      <li>You must be at least <strong>18 years old</strong> to use the App.</li>
+      <li>By using the App, you confirm that you are 18 or older and that the information you provide is accurate.</li>
+      <li>We reserve the right to terminate any account we believe belongs to a minor.</li>
+    </ul>
+
+    <hr>
+
+    <h2>2. Acceptable Use</h2>
+    <p>You agree <strong>not</strong> to use Stranger Chat to:</p>
+    <ul>
+      <li>Send, share, or solicit sexually explicit, abusive, violent, or illegal content</li>
+      <li>Engage in or facilitate child sexual abuse or exploitation (CSAE) of any kind</li>
+      <li>Harass, bully, threaten, or intimidate other users</li>
+      <li>Impersonate any person or entity</li>
+      <li>Spam other users or send unsolicited promotional content</li>
+      <li>Attempt to extract personal information from other users through deception</li>
+      <li>Use the App for any unlawful purpose or in violation of any applicable laws</li>
+      <li>Attempt to hack, reverse-engineer, or disrupt the App or its services</li>
+    </ul>
+
+    <hr>
+
+    <h2>3. User Content</h2>
+    <p>You are solely responsible for the content you send through the App. By using the App:</p>
+    <ul>
+      <li>You confirm that any content you share does not violate any law or third-party rights.</li>
+      <li>You acknowledge that chat messages are stored permanently and may be reviewed for safety enforcement or disclosed to law enforcement if required by law.</li>
+      <li>You grant Rsin Labs a limited right to review reported content for moderation purposes.</li>
+    </ul>
+
+    <hr>
+
+    <h2>4. Points & Rewards</h2>
+    <ul>
+      <li>Points are earned through daily check-ins, chat ratings, and watching rewarded ads.</li>
+      <li>Points are used to send friend requests, share images, and access certain features.</li>
+      <li>Points have no monetary value and cannot be exchanged for cash or transferred between accounts.</li>
+      <li>Rsin Labs reserves the right to modify the points system at any time.</li>
+    </ul>
+
+    <hr>
+
+    <h2>5. Premium Subscriptions</h2>
+    <ul>
+      <li>Premium subscriptions are billed through Google Play Billing.</li>
+      <li>Subscriptions auto-renew unless cancelled at least 24 hours before the renewal date.</li>
+      <li>Refunds are handled per Google Play's refund policy.</li>
+      <li>Rsin Labs does not store any payment or billing details.</li>
+    </ul>
+
+    <hr>
+
+    <h2>6. Moderation & Bans</h2>
+    <ul>
+      <li>We reserve the right to remove content, issue warnings, temporarily suspend, or permanently ban any account that violates these Terms.</li>
+      <li>Bans for CSAE violations are permanent with no appeal.</li>
+      <li>For other bans, you may contact us to request a review.</li>
+    </ul>
+
+    <hr>
+
+    <h2>7. Reporting</h2>
+    <p>Users are encouraged to report inappropriate behavior using the in-app Report feature. All reports are reviewed and acted upon. False or malicious reports may result in action against the reporting account.</p>
+
+    <hr>
+
+    <h2>8. Disclaimers</h2>
+    <ul>
+      <li>Stranger Chat is provided "as is" without warranties of any kind.</li>
+      <li>We do not guarantee continuous, uninterrupted, or error-free service.</li>
+      <li>We are not responsible for the conduct of any user on the platform.</li>
+      <li>We do not endorse or verify any content shared by users.</li>
+    </ul>
+
+    <hr>
+
+    <h2>9. Limitation of Liability</h2>
+    <p>To the maximum extent permitted by law, Rsin Labs shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of the App, including but not limited to damages from user interactions, content, or data loss.</p>
+
+    <hr>
+
+    <h2>10. Governing Law</h2>
+    <p>These Terms are governed by the laws of <strong>India</strong>. Any disputes shall be subject to the jurisdiction of the courts of India.</p>
+
+    <hr>
+
+    <h2>11. Changes to These Terms</h2>
+    <p>We may update these Terms at any time. Continued use of the App after changes are posted constitutes acceptance of the updated Terms.</p>
+
+    <div class="contact-box">
+      <strong>Contact Us</strong><br><br>
+      Rsin Labs<br>
+      Email: <a href="mailto:rsinlabs@gmail.com">rsinlabs@gmail.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--                  CHILD SAFETY POLICY                    -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="child" class="page">
+  <div class="container">
+    <h1>Child Safety & Anti-CSAE Policy</h1>
+    <div class="meta">
+      <strong>Developer:</strong> Rsin Labs &nbsp;|&nbsp;
+      <strong>App:</strong> Stranger Chat &nbsp;|&nbsp;
+      <strong>Last Updated:</strong> July 2025
+    </div>
+
+    <p>This Child Safety & Anti-CSAE (Child Sexual Abuse & Exploitation) Policy applies to the <strong>Stranger Chat</strong> mobile application published on Google Play by <strong>Rsin Labs</strong>. The App is intended <strong>only for adults aged 18 and above</strong>.</p>
+
+    <div class="warning">
+      <strong>Zero Tolerance:</strong> Stranger Chat enforces a strict zero-tolerance policy for any form of child sexual abuse or exploitation. Violations result in immediate permanent bans and reporting to law enforcement.
+    </div>
+
+    <h2>1. Age Restriction</h2>
+    <p>Stranger Chat is strictly for users aged <strong>18 and older</strong>. We do not knowingly allow minors to access the App.</p>
+    <p>We enforce this through:</p>
+    <ul>
+      <li>Age verification at signup requiring date of birth confirmation</li>
+      <li>An explicit 18+ acknowledgment checkbox before account activation</li>
+      <li>Immediate termination of any account found to belong to a minor</li>
+    </ul>
+
+    <p>We explicitly prohibit:</p>
+    <ul>
+      <li>Access to the App by users under 18</li>
+      <li>Any depictions of minors in sexual, exploitative, or harmful contexts</li>
+      <li>Grooming, solicitation, or predatory behavior toward minors</li>
+      <li>Sharing or requesting images or content involving minors</li>
+    </ul>
+
+    <hr>
+
+    <h2>2. Zero-Tolerance for CSAE & CSAM</h2>
+    <p>Stranger Chat enforces a <strong>zero-tolerance policy</strong> toward Child Sexual Abuse and Exploitation (CSAE), including Child Sexual Abuse Material (CSAM). Any content involving minors in sexual, exploitative, or abusive contexts is strictly and permanently prohibited.</p>
+
+    <p><strong>If CSAE or CSAM is detected, Stranger Chat will:</strong></p>
+    <ul>
+      <li>Immediately remove the content</li>
+      <li>Permanently ban the violating user with no right of appeal</li>
+      <li>Preserve all relevant data for law enforcement</li>
+      <li>Report confirmed CSAM to the <strong>National Center for Missing & Exploited Children (NCMEC)</strong> or the appropriate local authority as required by law</li>
+      <li>Fully cooperate with any resulting law enforcement investigation</li>
+    </ul>
+
+    <hr>
+
+    <h2>3. Moderation & Prevention</h2>
+    <p>To protect users and prevent CSAE, Stranger Chat implements the following safety measures:</p>
+    <ul>
+      <li><strong>Age verification gate</strong> at signup — date of birth required, minimum age enforced</li>
+      <li><strong>Client-side message filtering</strong> — messages containing prohibited content are blocked before sending</li>
+      <li><strong>Moderation logs</strong> — blocked message attempts are logged with user ID and timestamp for investigation</li>
+      <li><strong>In-app reporting</strong> — users can report any inappropriate content or behavior with one tap</li>
+      <li><strong>Manual review</strong> of all user reports by the Rsin Labs team</li>
+      <li><strong>Permanent bans</strong> for confirmed violations</li>
+      <li><strong>Community guidelines</strong> displayed at signup prohibiting sexual and harmful content</li>
+    </ul>
+
+    <hr>
+
+    <h2>4. Reporting Child Safety Concerns</h2>
+    <p>Users can report inappropriate content or suspected CSAE within the App using the built-in <strong>Report User</strong> feature available during any chat session.</p>
+    <p>You may also contact our child safety representative directly:</p>
+    <p><strong>Email:</strong> <a href="mailto:rsinlabs@gmail.com">rsinlabs@gmail.com</a></p>
+    <p>All child safety reports receive the highest response priority and are acted upon immediately.</p>
+
+    <hr>
+
+    <h2>5. Cooperation With Authorities</h2>
+    <p>Rsin Labs complies with all applicable local, regional, and national laws regarding child safety. If CSAE or CSAM is confirmed, we will:</p>
+    <ul>
+      <li>Preserve all required data for law enforcement</li>
+      <li>Report to NCMEC or the relevant legal authority in the applicable jurisdiction</li>
+      <li>Fully support lawful investigations and respond to legal requests promptly</li>
+    </ul>
+
+    <hr>
+
+    <h2>6. Data Retention for Safety</h2>
+    <p>Chat messages and moderation logs are stored permanently to support safety enforcement and to comply with lawful requests from government or law enforcement authorities. This data is not used for commercial purposes.</p>
+
+    <hr>
+
+    <h2>7. Commitment to a Safe Community</h2>
+    <p>Rsin Labs is committed to maintaining a safe platform for all eligible adult users. Child safety is our highest enforcement priority. Violations are acted upon immediately and without exception.</p>
+
+    <div class="contact-box">
+      <strong>Child Safety Contact</strong><br><br>
+      For urgent CSAE concerns or Google Play child safety notifications:<br><br>
+      Rsin Labs<br>
+      Email: <a href="mailto:rsinlabs@gmail.com">rsinlabs@gmail.com</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showPage(id, btn) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo(0, 0);
+  }
+</script>
+
 </body>
 </html>
