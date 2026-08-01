@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskBell - Privacy Policy & Terms and Conditions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0D0D0D;
+            --surface-color: #171717;
+            --surface-border: #2A2A2A;
+            --accent-color: #FFC107;
+            --accent-glow: rgba(255, 193, 7, 0.15);
+            --text-primary: #EEEEEE;
+            --text-secondary: #A0A0A0;
+            --text-muted: #666666;
+            --accent-text: #0D0D0D;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+        }
+
+        header {
+            background-color: var(--surface-color);
+            border-bottom: 1px solid var(--surface-border);
+            padding: 24px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav {
+            display: flex;
+            gap: 16px;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-text);
+            background-color: var(--accent-color);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px 80px 24px;
+        }
+
+        .last-updated {
+            display: inline-block;
+            font-size: 13px;
+            color: var(--accent-color);
+            background-color: var(--accent-glow);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+        }
+
+        .doc-section {
+            background-color: var(--surface-color);
+            border: 1px solid var(--surface-border);
+            border-radius: 16px;
+            padding: 36px;
+            margin-bottom: 40px;
+        }
+
+        .doc-section h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--surface-border);
+        }
+
+        .doc-section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 24px 0 12px 0;
+        }
+
+        .doc-section p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 16px;
+        }
+
+        .doc-section ul {
+            margin: 0 0 20px 24px;
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        .doc-section li {
+            margin-bottom: 8px;
+        }
+
+        .permission-box {
+            background-color: var(--bg-color);
+            border: 1px solid var(--surface-border);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+        }
+
+        .permission-box strong {
+            color: var(--accent-color);
+            font-size: 15px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .permission-box p {
+            margin-bottom: 0;
+            font-size: 14px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 32px 24px;
+            border-top: 1px solid var(--surface-border);
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+            .header-container {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .doc-section {
+                padding: 24px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">Task<span>Bell</span></a>
+            <nav>
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms & Conditions</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="last-updated">Last Updated: August 1, 2026</div>
+        <h1>TaskBell Legal Documentation</h1>
+        <p class="subtitle">Official Privacy Policy and Terms & Conditions for TaskBell Mobile Application.</p>
+
+        <!-- PRIVACY POLICY SECTION -->
+        <section id="privacy" class="doc-section">
+            <h2>Privacy Policy</h2>
+
+            <p>Welcome to <strong>TaskBell</strong>. Your privacy is critically important to us. This Privacy Policy document explains how TaskBell collects, uses, and safeguards your information when you use our mobile application.</p>
+
+            <h3>1. Information Collection and Storage</h3>
+            <p>TaskBell is designed with a strict <strong>privacy-first approach</strong>:</p>
+            <ul>
+                <li><strong>Local Data Storage:</strong> All your task titles, descriptions, due dates, reminder preferences, and completed task states are stored <strong>strictly locally on your device</strong> using SQLite/Room local database.</li>
+                <li><strong>No Cloud Servers / No Accounts:</strong> TaskBell does not require account registration, login credentials, or personal profiles. We do not transmit or store your personal task data on remote servers.</li>
+                <li><strong>No Personal Data Selling:</strong> We do not sell, rent, or share any personal information to third parties or advertising networks.</li>
+            </ul>
+
+            <h3>2. Device Permissions Requested and Purpose</h3>
+            <p>To provide reliable, timely task reminders and call-style alerts, TaskBell requests the following Android device permissions:</p>
+
+            <div class="permission-box">
+                <strong>Notification Access (POST_NOTIFICATIONS)</strong>
+                <p>Used to display timely task notifications and reminders in your device's notification bar.</p>
+            </div>
+
+            <div class="permission-box">
+                <strong>Display Over Other Apps (SYSTEM_ALERT_WINDOW)</strong>
+                <p>Required exclusively for our Call-Style Alert feature, displaying a full-screen incoming alert UI over the lock screen and active apps when an urgent task alarm triggers.</p>
+            </div>
+
+            <div class="permission-box">
+                <strong>Exact Alarm Scheduling (SCHEDULE_EXACT_ALARM / USE_EXACT_ALARM)</strong>
+                <p>Required to ensure task alarms and timers fire precisely at the exact minute set by the user.</p>
+            </div>
+
+            <div class="permission-box">
+                <strong>Ignore Battery Optimizations (REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)</strong>
+                <p>Optional permission used to prevent OEM background battery management from delaying or killing task alarm execution.</p>
+            </div>
+
+            <h3>3. Third-Party Services</h3>
+            <p>TaskBell does not integrate third-party tracking, analytics, or behavioral advertising SDKs that collect personal identifiers.</p>
+
+            <h3>4. Children's Privacy</h3>
+            <p>Our application does not address anyone under the age of 13. We do not knowingly collect personally identifiable information from children under 13. All data remains local to the user's device.</p>
+
+            <h3>5. Changes to This Privacy Policy</h3>
+            <p>We may update our Privacy Policy from time to time. You are advised to review this page periodically for any changes. Any updates are effective immediately upon publishing.</p>
+
+            <h3>6. Contact Us</h3>
+            <p>If you have any questions or suggestions regarding our Privacy Policy, please contact us at:</p>
+            <p><strong>Email:</strong> <a href="mailto:support@taskbell.app" style="color: var(--accent-color);">support@taskbell.app</a></p>
+        </section>
+
+        <!-- TERMS & CONDITIONS SECTION -->
+        <section id="terms" class="doc-section">
+            <h2>Terms & Conditions</h2>
+
+            <p>By downloading or using the TaskBell application, these terms will automatically apply to you – you should make sure that you read them carefully before using the app.</p>
+
+            <h3>1. License and Usage</h3>
+            <p>TaskBell grants you a personal, non-exclusive, non-transferable, revocable license to use the application on your Android devices strictly for personal and non-commercial productivity management.</p>
+
+            <h3>2. User Responsibilities</h3>
+            <ul>
+                <li>You are responsible for keeping your phone and access to the application secure.</li>
+                <li>You acknowledge that task reminders depend on device settings, notification permissions, and system battery settings.</li>
+            </ul>
+
+            <h3>3. Limitation of Liability</h3>
+            <p>TaskBell is provided on an <strong>"AS IS" and "AS AVAILABLE"</strong> basis. While we strive to ensure high reliability for task alarms and notifications:</p>
+            <ul>
+                <li>We are not liable for any missed reminders resulting from device power shutdown, OS battery optimization restrictions, or revoked permissions.</li>
+                <li>In no event shall the developer be liable for any indirect, incidental, or consequential damages resulting from the use of or inability to use the application.</li>
+            </ul>
+
+            <h3>4. Modifications to the Application</h3>
+            <p>We reserve the right to update, modify, or add features to TaskBell at any time to improve app performance and user experience.</p>
+
+            <h3>5. Governing Law</h3>
+            <p>These terms and conditions are governed by and construed in accordance with applicable standard consumer software guidelines.</p>
+
+            <h3>6. Contact Information</h3>
+            <p>For support or inquiry regarding Terms & Conditions, contact us at <a href="mailto:support@taskbell.app" style="color: var(--accent-color);">support@taskbell.app</a>.</p>
+        </section>
+    </div>
+
+    <footer>
+        &copy; 2026 TaskBell. All rights reserved. Designed for Google Play Store Publication.
+    </footer>
+
+</body>
+</html>
