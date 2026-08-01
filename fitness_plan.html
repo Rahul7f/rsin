@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>My Fitness Plan</title>
+<style>
+  :root{
+    --bg:#f6f7f5;
+    --card:#ffffff;
+    --ink:#1e2a22;
+    --sub:#6b7568;
+    --accent:#2f7a4f;
+    --accent-light:#e6f3ea;
+    --accent2:#c8703a;
+    --accent2-light:#fbeee3;
+    --border:#e6e8e3;
+    --shadow:0 1px 3px rgba(30,42,34,0.08);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    padding-bottom:40px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  header{
+    position:sticky;top:0;z-index:20;
+    background:linear-gradient(135deg,#2f7a4f,#245f3e);
+    color:#fff;
+    padding:16px 18px 14px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.12);
+  }
+  header h1{margin:0;font-size:19px;font-weight:700;letter-spacing:0.2px;}
+  header p{margin:4px 0 0;font-size:12.5px;opacity:0.9;}
+
+  .toplevel-tabs{
+    display:flex;
+    gap:8px;
+    padding:10px 14px 0;
+    position:sticky;
+    top:64px;
+    z-index:19;
+    background:var(--bg);
+  }
+  .toplevel-tab{
+    flex:1;
+    text-align:center;
+    padding:10px 6px;
+    border-radius:12px;
+    background:var(--card);
+    border:1px solid var(--border);
+    font-weight:700;
+    font-size:13.5px;
+    color:var(--sub);
+    box-shadow:var(--shadow);
+  }
+  .toplevel-tab.active{
+    background:var(--accent);
+    color:#fff;
+    border-color:var(--accent);
+  }
+
+  main{padding:14px;}
+  section.page{display:none;}
+  section.page.active{display:block;}
+
+  .day-scroller{
+    display:flex;
+    overflow-x:auto;
+    gap:8px;
+    padding:12px 2px 4px;
+    scrollbar-width:none;
+  }
+  .day-scroller::-webkit-scrollbar{display:none;}
+  .day-pill{
+    flex:0 0 auto;
+    padding:9px 14px;
+    border-radius:20px;
+    background:var(--card);
+    border:1px solid var(--border);
+    font-size:13px;
+    font-weight:600;
+    color:var(--sub);
+    white-space:nowrap;
+    box-shadow:var(--shadow);
+  }
+  .day-pill.active{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:#fff;
+  }
+
+  .day-panel{display:none;}
+  .day-panel.active{display:block;}
+
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:14px;
+    margin-bottom:12px;
+    box-shadow:var(--shadow);
+  }
+  .card-title{
+    font-size:11.5px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:0.6px;
+    color:var(--accent);
+    margin:0 0 8px;
+  }
+  .warmup-list, .finisher-list{
+    margin:0;padding-left:18px;font-size:14px;color:var(--ink);line-height:1.7;
+  }
+
+  .exercise{
+    border-top:1px solid var(--border);
+    padding:12px 0;
+  }
+  .exercise:first-child{border-top:none;padding-top:2px;}
+  .ex-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:10px;
+  }
+  .ex-name{font-weight:700;font-size:15px;}
+  .ex-check{
+    width:24px;height:24px;flex:0 0 24px;
+    border-radius:8px;
+    border:2px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+    font-size:14px;color:transparent;
+    background:#fff;
+  }
+  .ex-check.done{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:#fff;
+  }
+  .ex-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-top:8px;
+  }
+  .tag{
+    font-size:12px;
+    font-weight:600;
+    padding:4px 9px;
+    border-radius:8px;
+    background:var(--accent-light);
+    color:var(--accent);
+  }
+  .tag.rest{background:#eef1ee;color:var(--sub);}
+  .tag.weight{background:var(--accent2-light);color:var(--accent2);}
+
+  .cardio-box{
+    background:var(--accent-light);
+    border-radius:12px;
+    padding:12px 14px;
+    font-size:14px;
+    line-height:1.6;
+  }
+  .cardio-box b{color:var(--accent);}
+
+  .note-box{
+    background:#fff8e8;
+    border:1px solid #f0e2b8;
+    border-radius:12px;
+    padding:12px 14px;
+    font-size:13.5px;
+    color:#6b5a20;
+    line-height:1.6;
+  }
+
+  /* Diet page */
+  .stat-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:8px;
+    margin-bottom:12px;
+  }
+  .stat{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:10px 12px;
+    box-shadow:var(--shadow);
+  }
+  .stat .label{font-size:11px;color:var(--sub);font-weight:600;text-transform:uppercase;letter-spacing:0.4px;}
+  .stat .value{font-size:16px;font-weight:800;color:var(--ink);margin-top:2px;}
+
+  .accordion{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    margin-bottom:10px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+  }
+  .accordion-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px;
+    cursor:pointer;
+  }
+  .accordion-head .htext{display:flex;flex-direction:column;}
+  .accordion-head .time{font-size:11.5px;color:var(--sub);font-weight:600;}
+  .accordion-head .title{font-size:15px;font-weight:700;margin-top:1px;}
+  .accordion-head .chev{
+    font-size:14px;color:var(--sub);
+    transition:transform 0.2s;
+  }
+  .accordion.open .chev{transform:rotate(180deg);}
+  .accordion-body{
+    display:none;
+    padding:0 14px 14px;
+  }
+  .accordion.open .accordion-body{display:block;}
+  .option{
+    background:var(--bg);
+    border-radius:10px;
+    padding:10px 12px;
+    margin-top:8px;
+    font-size:13.5px;
+    line-height:1.6;
+  }
+  .option .opt-label{font-weight:700;color:var(--accent);font-size:12px;text-transform:uppercase;letter-spacing:0.3px;display:block;margin-bottom:3px;}
+  .best-badge{
+    display:inline-block;
+    background:var(--accent);
+    color:#fff;
+    font-size:10px;
+    font-weight:700;
+    padding:2px 7px;
+    border-radius:6px;
+    margin-left:6px;
+    vertical-align:middle;
+  }
+
+  .food-cols{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+  .food-col h4{
+    margin:0 0 6px;
+    font-size:13px;
+    color:var(--accent);
+  }
+  .food-col ul{
+    margin:0;padding-left:16px;font-size:13px;line-height:1.7;color:var(--ink);
+  }
+  .limit-list{margin:0;padding-left:16px;font-size:13.5px;line-height:1.8;color:#a13d3d;}
+
+  .grocery-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+  .grocery-col h4{margin:0 0 6px;font-size:13px;color:var(--accent2);}
+  .grocery-col ul{margin:0;padding-left:16px;font-size:13px;line-height:1.7;}
+
+  .progress-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13px;
+  }
+  .progress-table th, .progress-table td{
+    text-align:left;
+    padding:8px 6px;
+    border-bottom:1px solid var(--border);
+  }
+  .progress-table th{color:var(--sub);font-size:11.5px;text-transform:uppercase;}
+
+  footer{
+    text-align:center;
+    font-size:12px;
+    color:var(--sub);
+    padding:20px 14px 4px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🏋️ My Fitness Plan</h1>
+  <p>Fat loss + muscle gain · 12-week program</p>
+</header>
+
+<div class="toplevel-tabs">
+  <div class="toplevel-tab active" id="tab-workout" onclick="showTop('workout')">Workout</div>
+  <div class="toplevel-tab" id="tab-diet" onclick="showTop('diet')">Diet</div>
+</div>
+
+<main>
+
+  <!-- ================= WORKOUT PAGE ================= -->
+  <section class="page active" id="page-workout">
+
+    <div class="note-box" style="margin-bottom:12px;">
+      <b>Session structure:</b> 10 min warm-up · 60 min weights · 20 min cardio (90 min total).<br>
+      Rest: 90s compound · 60s isolation. Weight rule: Set 1 easy, Set 2 challenging, last reps of Set 3/4 hard but good form. 12+ reps easy → increase weight next time.
+    </div>
+
+    <div class="day-scroller" id="day-scroller">
+      <div class="day-pill active" data-day="mon" onclick="showDay('mon')">Mon · Chest/Tri</div>
+      <div class="day-pill" data-day="tue" onclick="showDay('tue')">Tue · Back/Bi</div>
+      <div class="day-pill" data-day="wed" onclick="showDay('wed')">Wed · Legs</div>
+      <div class="day-pill" data-day="thu" onclick="showDay('thu')">Thu · Shoulders</div>
+      <div class="day-pill" data-day="fri" onclick="showDay('fri')">Fri · Upper</div>
+      <div class="day-pill" data-day="sat" onclick="showDay('sat')">Sat · Fat Burn</div>
+    </div>
+
+    <!-- MONDAY -->
+    <div class="day-panel active" id="day-mon">
+      <div class="card">
+        <p class="card-title">Warm-up (10 min)</p>
+        <ul class="warmup-list">
+          <li>Incline treadmill: 6 km/h, incline 8-10</li>
+          <li>Shoulder rotations</li>
+          <li>Arm circles</li>
+          <li>10 pushups (or incline pushups)</li>
+        </ul>
+      </div>
+
+      <div class="card" id="ex-list-mon"></div>
+
+      <div class="card">
+        <p class="card-title">Cardio (20 min)</p>
+        <div class="cardio-box">Treadmill — Speed <b>5.5-6 km/h</b>, Incline <b>10-12</b></div>
+      </div>
+    </div>
+
+    <!-- TUESDAY -->
+    <div class="day-panel" id="day-tue">
+      <div class="card" id="ex-list-tue"></div>
+      <div class="card">
+        <p class="card-title">Cardio (20 min)</p>
+        <div class="cardio-box">20 minutes, moderate steady pace</div>
+      </div>
+    </div>
+
+    <!-- WEDNESDAY -->
+    <div class="day-panel" id="day-wed">
+      <div class="card" id="ex-list-wed"></div>
+      <div class="card">
+        <p class="card-title">Cardio</p>
+        <div class="cardio-box">Cycle — 20 minutes</div>
+      </div>
+    </div>
+
+    <!-- THURSDAY -->
+    <div class="day-panel" id="day-thu">
+      <div class="card" id="ex-list-thu"></div>
+      <div class="card">
+        <p class="card-title">Cardio</p>
+        <div class="cardio-box">20 minutes, moderate steady pace</div>
+      </div>
+    </div>
+
+    <!-- FRIDAY -->
+    <div class="day-panel" id="day-fri">
+      <div class="card" id="ex-list-fri"></div>
+      <div class="card">
+        <p class="card-title">Finisher</p>
+        <div class="cardio-box">20 minutes treadmill to finish</div>
+      </div>
+    </div>
+
+    <!-- SATURDAY -->
+    <div class="day-panel" id="day-sat">
+      <div class="card" id="ex-list-sat"></div>
+    </div>
+
+    <div class="card" style="margin-top:4px;">
+      <p class="card-title">Progressive Overload</p>
+      <table class="progress-table">
+        <tr><th>Week</th><th>Action</th></tr>
+        <tr><td>1</td><td>Learn proper form</td></tr>
+        <tr><td>2</td><td>+2.5 kg per exercise if all sets done with good form</td></tr>
+        <tr><td>3</td><td>+2.5 kg again where possible</td></tr>
+        <tr><td>4</td><td>Same weight, perfect technique (deload if fatigued)</td></tr>
+        <tr><td>5+</td><td>Repeat the cycle</td></tr>
+      </table>
+      <p style="font-size:13px;color:var(--sub);margin:10px 0 0;line-height:1.6;">
+        12 reps comfortable on every set → increase weight (smallest increment). Can't complete 8 reps → reduce weight.
+      </p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Extra Tips</p>
+      <ul class="warmup-list">
+        <li>Log weight & reps for every exercise</li>
+        <li>Controlled reps: ~2 sec lowering, 1 sec lifting</li>
+        <li>Never skip leg day</li>
+        <li>Weigh in Friday morning, same conditions each time</li>
+        <li>8,000-10,000 steps/day outside the gym</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= DIET PAGE ================= -->
+  <section class="page" id="page-diet">
+
+    <div class="stat-grid">
+      <div class="stat"><div class="label">Current</div><div class="value">71.6 kg</div></div>
+      <div class="stat"><div class="label">Goal</div><div class="value">65-66 kg</div></div>
+      <div class="stat"><div class="label">Calories</div><div class="value">1,800-2,000</div></div>
+      <div class="stat"><div class="label">Protein</div><div class="value">110-120 g</div></div>
+      <div class="stat" style="grid-column:1/3;"><div class="label">Water</div><div class="value">3-4 L/day</div></div>
+    </div>
+
+    <div class="accordion open" onclick="toggleAcc(this)">
+      <div class="accordion-head">
+        <div class="htext"><span class="time">6:20 AM</span><span class="title">Pre-Workout</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="accordion-body">
+        <p style="font-size:13.5px;color:var(--sub);margin:0;">Choose one:</p>
+        <div class="option">🍌 1 Banana</div>
+        <div class="option">🍎 1 Apple</div>
+        <div class="option">☕ Black coffee (no sugar, optional)</div>
+      </div>
+    </div>
+
+    <div class="accordion" onclick="toggleAcc(this)">
+      <div class="accordion-head">
+        <div class="htext"><span class="time">8:15 AM</span><span class="title">Post-Workout — Most Important</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="accordion-body">
+        <div class="option"><span class="opt-label">Option 1<span class="best-badge">BEST</span></span>1 scoop Whey Protein + 1 Banana</div>
+        <div class="option"><span class="opt-label">Option 2</span>100-150 g Paneer + 1 fruit</div>
+        <div class="option"><span class="opt-label">Option 3</span>200 g high-protein Greek yogurt</div>
+      </div>
+    </div>
+
+    <div class="accordion" onclick="toggleAcc(this)">
+      <div class="accordion-head">
+        <div class="htext"><span class="time">9:00-9:30 AM</span><span class="title">Breakfast</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="accordion-body">
+        <div class="option"><span class="opt-label">Option A</span>60 g Oats + 250 ml Milk + 10 Almonds</div>
+        <div class="option"><span class="opt-label">Option B</span>2 Besan Chillas + 100 g Curd</div>
+        <div class="option"><span class="opt-label">Option C</span>2 Moong Dal Chillas + Mint chutney</div>
+      </div>
+    </div>
+
+    <div class="accordion" onclick="toggleAcc(this)">
+      <div class="accordion-head">
+        <div class="htext"><span class="time">1:00 PM</span><span class="title">Lunch</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="accordion-body">
+        <div class="option">2 Whole Wheat Rotis + 1 Bowl Dal + 1 Bowl Sabzi + Salad (cucumber, tomato, onion) + 100 g Curd</div>
+        <p style="font-size:12.5px;color:var(--accent2);margin:8px 0 0;">If protein is low that day: add 100 g Paneer or Tofu</p>
+      </div>
+    </div>
+
+    <div class="accordion" onclick="toggleAcc(this)">
+      <div class="accordion-head">
+        <div class="htext"><span class="time">5:00 PM</span><span class="title">Evening Snack</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="accordion-body">
+        <p style="font-size:13.5px;color:var(--sub);margin:0;">Choose one:</p>
+        <div class="option">Roasted Chana (40 g)</div>
+        <div class="option">Sprouts Chaat</div>
+        <div class="option">Buttermilk</div>
+        <div class="option">Greek yogurt</div>
+        <div class="option">Fruit + handful of peanuts</div>
+      </div>
+    </div>
+
+    <div class="accordion" onclick="toggleAcc(this)">
+      <div class="accordion-head">
+        <div class="htext"><span class="time">8:00 PM</span><span class="title">Dinner</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="accordion-body">
+        <div class="option"><span class="opt-label">Option A</span>2 Rotis + Paneer Bhurji (150 g paneer) + Salad</div>
+        <div class="option"><span class="opt-label">Option B</span>Tofu Stir Fry + Vegetables + 2 Rotis</div>
+        <div class="option"><span class="opt-label">Option C</span>Dal + Mixed Vegetables + 100 g Paneer</div>
+      </div>
+    </div>
+
+    <div class="accordion" onclick="toggleAcc(this)">
+      <div class="accordion-head">
+        <div class="htext"><span class="time">Optional</span><span class="title">Before Bed</span></div>
+        <span class="chev">▾</span>
+      </div>
+      <div class="accordion-body">
+        <div class="option">1 Glass Milk (without sugar)</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px;">
+      <p class="card-title">Foods to Eat Regularly</p>
+      <div class="food-cols">
+        <div class="food-col">
+          <h4>Protein</h4>
+          <ul>
+            <li>Paneer (low-fat)</li>
+            <li>Tofu</li>
+            <li>Soya Chunks</li>
+            <li>Dal / Rajma / Chole</li>
+            <li>Greek Yogurt</li>
+            <li>Whey Protein</li>
+          </ul>
+        </div>
+        <div class="food-col">
+          <h4>Carbs & Fats</h4>
+          <ul>
+            <li>Roti, Rice (small bowl)</li>
+            <li>Oats, Sweet Potato</li>
+            <li>Fruits</li>
+            <li>Almonds, Walnuts, Peanuts</li>
+            <li>Flax / Chia seeds</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Foods to Limit</p>
+      <ul class="limit-list">
+        <li>Cold drinks</li>
+        <li>Packaged fruit juice</li>
+        <li>Chips & namkeen</li>
+        <li>Sweets & desserts (occasional treat only)</li>
+        <li>Deep-fried snacks (samosa, kachori, pakora)</li>
+        <li>Fast food (pizza, burgers, fries)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Weekly Cheat Meal</p>
+      <p style="font-size:13.5px;line-height:1.6;margin:0 0 6px;">One cheat meal per week — not a full cheat day.</p>
+      <p style="font-size:13.5px;line-height:1.6;margin:0;color:var(--sub);">Examples: paneer tikka with naan, dosa, biryani, or pizza in moderation. Eat until satisfied, not overly full — then back to normal diet at the next meal.</p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Grocery List</p>
+      <div class="grocery-grid">
+        <div class="grocery-col">
+          <h4>Protein</h4>
+          <ul>
+            <li>Whey Protein</li>
+            <li>Paneer</li>
+            <li>Tofu</li>
+            <li>Soya Chunks</li>
+            <li>Greek Yogurt</li>
+            <li>Curd</li>
+            <li>Moong Dal</li>
+            <li>Chana</li>
+            <li>Rajma</li>
+          </ul>
+        </div>
+        <div class="grocery-col">
+          <h4>Carbs</h4>
+          <ul>
+            <li>Oats</li>
+            <li>Whole Wheat Atta</li>
+            <li>Rice</li>
+            <li>Bananas</li>
+            <li>Apples</li>
+            <li>Sweet Potatoes</li>
+          </ul>
+        </div>
+      </div>
+      <div class="grocery-grid" style="margin-top:10px;">
+        <div class="grocery-col">
+          <h4>Vegetables</h4>
+          <ul>
+            <li>Spinach</li>
+            <li>Broccoli</li>
+            <li>Carrots</li>
+            <li>Beans</li>
+            <li>Capsicum</li>
+            <li>Tomatoes</li>
+            <li>Cucumbers</li>
+            <li>Onions</li>
+          </ul>
+        </div>
+        <div class="grocery-col">
+          <h4>Healthy Fats</h4>
+          <ul>
+            <li>Almonds</li>
+            <li>Walnuts</li>
+            <li>Peanuts</li>
+            <li>Flax Seeds</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="note-box">
+      💡 Since you're vegetarian and don't eat many eggs, a good-quality whey protein makes it much easier to hit 110-120 g protein/day without relying only on paneer.
+    </div>
+
+    <div class="card">
+      <p class="card-title">Expected Results (~12 weeks)</p>
+      <ul class="warmup-list">
+        <li>4-6 kg fat loss</li>
+        <li>Better muscle definition</li>
+        <li>More strength and energy</li>
+        <li>Smaller waist while preserving muscle mass</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>Tap exercises to check them off · Stay consistent 💪</footer>
+
+<script>
+const workouts = {
+  mon: [
+    {name:"Machine Chest Press", sets:"4 × 10-12", rest:"90 sec", weight:"20-25 kg"},
+    {name:"Incline Chest Press Machine", sets:"3 × 10-12", rest:"90 sec", weight:"15-20 kg"},
+    {name:"Pec Deck Fly", sets:"3 × 12-15", rest:"60 sec", weight:"20-25 kg"},
+    {name:"Cable Chest Fly", sets:"3 × 15", rest:"60 sec", weight:"5-7.5 kg/side"},
+    {name:"Rope Tricep Pushdown", sets:"3 × 12", rest:"60 sec", weight:"15-20 kg"},
+    {name:"Overhead Rope Extension", sets:"3 × 12", rest:"60 sec", weight:"10-15 kg"},
+  ],
+  tue: [
+    {name:"Lat Pulldown", sets:"4 × 10-12", rest:"", weight:"25-30 kg"},
+    {name:"Seated Cable Row", sets:"3 × 10", rest:"", weight:"25 kg"},
+    {name:"Chest Supported Row", sets:"3 × 12", rest:"", weight:"20 kg"},
+    {name:"Straight Arm Pulldown", sets:"3 × 15", rest:"", weight:"10-15 kg"},
+    {name:"Face Pull", sets:"3 × 15", rest:"", weight:"10 kg"},
+    {name:"Machine Bicep Curl", sets:"3 × 12", rest:"", weight:"15 kg"},
+    {name:"Hammer Curl", sets:"3 × 12", rest:"", weight:"6 kg dumbbells"},
+  ],
+  wed: [
+    {name:"Leg Press", sets:"4 × 12", rest:"", weight:"60 kg"},
+    {name:"Romanian Deadlift", sets:"3 × 10", rest:"", weight:"10 kg dumbbells/hand"},
+    {name:"Leg Extension", sets:"3 × 12", rest:"", weight:"20 kg"},
+    {name:"Leg Curl", sets:"3 × 12", rest:"", weight:"20 kg"},
+    {name:"Walking Lunges", sets:"3 rounds", rest:"", weight:"Bodyweight (wk1)"},
+    {name:"Standing Calf Raise", sets:"4 × 15", rest:"", weight:""},
+  ],
+  thu: [
+    {name:"Machine Shoulder Press", sets:"4 × 10", rest:"", weight:"15-20 kg"},
+    {name:"Lateral Raise", sets:"3 × 15", rest:"", weight:"5 kg dumbbells"},
+    {name:"Rear Delt Fly", sets:"3 × 15", rest:"", weight:"15 kg"},
+    {name:"Front Raise", sets:"3 × 12", rest:"", weight:"5 kg"},
+    {name:"Cable Crunch", sets:"3 × 15", rest:"", weight:""},
+    {name:"Hanging Knee Raise", sets:"3 × 12", rest:"", weight:""},
+    {name:"Plank", sets:"3 × 45 sec", rest:"", weight:""},
+  ],
+  fri: [
+    {name:"Chest Press", sets:"3 × 10", rest:"", weight:""},
+    {name:"Lat Pulldown", sets:"3 × 10", rest:"", weight:""},
+    {name:"Shoulder Press", sets:"3 × 10", rest:"", weight:""},
+    {name:"Cable Row", sets:"3 × 10", rest:"", weight:""},
+    {name:"Bicep Curl", sets:"3 × 12", rest:"", weight:""},
+    {name:"Tricep Pushdown", sets:"3 × 12", rest:"", weight:""},
+  ],
+  sat: [
+    {name:"Incline Walk", sets:"20 min", rest:"", weight:""},
+    {name:"Battle Rope", sets:"5 rounds × 30 sec", rest:"", weight:""},
+    {name:"Kettlebell Swing", sets:"3 × 15", rest:"", weight:""},
+    {name:"Mountain Climbers", sets:"3 × 20", rest:"", weight:""},
+    {name:"Russian Twist", sets:"3 × 20", rest:"", weight:""},
+    {name:"Plank", sets:"3 sets", rest:"", weight:""},
+  ],
+};
+
+function buildExercises(day){
+  const container = document.getElementById('ex-list-' + day);
+  if(!container) return;
+  container.innerHTML = '<p class="card-title">Exercises</p>';
+  workouts[day].forEach((ex, i) => {
+    const id = day + '-' + i;
+    const div = document.createElement('div');
+    div.className = 'exercise';
+    let tags = `<span class="tag">${ex.sets}</span>`;
+    if(ex.rest) tags += `<span class="tag rest">Rest ${ex.rest}</span>`;
+    if(ex.weight) tags += `<span class="tag weight">${ex.weight}</span>`;
+    div.innerHTML = `
+      <div class="ex-head">
+        <div class="ex-name">${ex.name}</div>
+        <div class="ex-check" id="check-${id}" onclick="toggleCheck('${id}')">✓</div>
+      </div>
+      <div class="ex-meta">${tags}</div>
+    `;
+    container.appendChild(div);
+  });
+}
+Object.keys(workouts).forEach(buildExercises);
+
+function toggleCheck(id){
+  const el = document.getElementById('check-' + id);
+  el.classList.toggle('done');
+  try{ localStorage.setItem('chk-'+id, el.classList.contains('done') ? '1':'0'); }catch(e){}
+}
+// restore checks
+Object.keys(workouts).forEach(day=>{
+  workouts[day].forEach((ex,i)=>{
+    const id = day+'-'+i;
+    try{
+      if(localStorage.getItem('chk-'+id) === '1'){
+        const el = document.getElementById('check-'+id);
+        if(el) el.classList.add('done');
+      }
+    }catch(e){}
+  });
+});
+
+function showTop(which){
+  document.getElementById('page-workout').classList.toggle('active', which==='workout');
+  document.getElementById('page-diet').classList.toggle('active', which==='diet');
+  document.getElementById('tab-workout').classList.toggle('active', which==='workout');
+  document.getElementById('tab-diet').classList.toggle('active', which==='diet');
+}
+
+function showDay(day){
+  document.querySelectorAll('.day-pill').forEach(p=>{
+    p.classList.toggle('active', p.dataset.day === day);
+  });
+  document.querySelectorAll('.day-panel').forEach(p=>{
+    p.classList.toggle('active', p.id === 'day-' + day);
+  });
+}
+
+function toggleAcc(el){
+  el.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>
