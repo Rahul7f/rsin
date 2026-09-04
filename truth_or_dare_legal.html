@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Legal — Truth or Dare: Spicy Edition</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── Design System Tokens (Truth or Dare · Neo-Brutalism · v1) ── */
+    :root {
+      --ink:      #1A0A2E;
+      --paper:    #F0E8FF;
+      --red:      #FF3366;
+      --purple:   #7B2FFF;
+      --yellow:   #FFD600;
+      --green:    #0E8A4F;
+      --blue:     #2E7DFF;
+      --muted:    rgba(26,10,46,0.55);
+      --muted-lt: rgba(26,10,46,0.15);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      border-bottom: 4px solid var(--ink);
+      padding: 32px 24px 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo-mark {
+      width: 72px;
+      height: 72px;
+      border: 4px solid var(--ink);
+      border-radius: 18px;
+      box-shadow: 6px 6px 0 var(--ink);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .logo-t {
+      background: var(--red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      color: var(--paper);
+    }
+
+    .logo-d {
+      background: var(--purple);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      color: var(--paper);
+    }
+
+    .header-text { display: flex; flex-direction: column; gap: 4px; }
+
+    .header-text h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(28px, 5vw, 44px);
+      letter-spacing: 0.04em;
+      line-height: 0.95;
+    }
+
+    .header-text h1 em {
+      font-style: normal;
+      color: var(--red);
+    }
+
+    .header-text p {
+      font-size: 12px;
+      font-weight: 600;
+      opacity: 0.55;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── Tab strip ── */
+    .tab-strip {
+      display: flex;
+      gap: 0;
+      border-bottom: 4px solid var(--ink);
+      padding: 0 24px;
+      max-width: 860px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .tab {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.08em;
+      padding: 16px 28px;
+      border: none;
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+      opacity: 0.38;
+      border-bottom: 5px solid transparent;
+      margin-bottom: -4px;
+      transition: opacity 0.12s ease;
+    }
+
+    .tab:hover { opacity: 0.7; }
+
+    .tab.active {
+      opacity: 1;
+      border-bottom-color: var(--red);
+    }
+
+    .tab.active.terms-tab { border-bottom-color: var(--purple); }
+
+    /* ── Layout ── */
+    .wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    /* ── Doc meta row ── */
+    .doc-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+
+    .chip {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 5px 12px;
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+    }
+
+    .chip-red   { background: var(--red);    color: var(--paper); border-color: var(--red); }
+    .chip-purple{ background: var(--purple); color: var(--paper); border-color: var(--purple); }
+    .chip-ghost { background: transparent;   color: var(--muted); }
+
+    /* ── Callout ── */
+    .callout {
+      border: 3px solid var(--ink);
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-bottom: 32px;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.65;
+      color: var(--ink);
+      background: rgba(26,10,46,0.04);
+    }
+
+    .callout strong { font-weight: 700; }
+
+    /* ── Section ── */
+    .section {
+      border: 4px solid var(--ink);
+      border-radius: 18px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      padding: 18px 22px 16px;
+      border-bottom: 4px solid var(--ink);
+      background: var(--ink);
+    }
+
+    .section-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      color: var(--paper);
+      opacity: 0.5;
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.06em;
+      color: var(--paper);
+      line-height: 1;
+    }
+
+    .section-body {
+      padding: 20px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .section-body p,
+    .section-body li {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.75;
+      color: var(--ink);
+    }
+
+    .section-body strong { font-weight: 700; }
+
+    .section-body ul,
+    .section-body ol {
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .section-body a {
+      color: var(--red);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .section-body a:hover { text-decoration: underline; }
+
+    /* Red section accent */
+    .section.accent-red .section-head { background: var(--red); }
+    .section.accent-red .section-num  { color: var(--paper); opacity: 0.75; }
+
+    /* Purple section accent */
+    .section.accent-purple .section-head { background: var(--purple); }
+
+    /* ── Inner callout ── */
+    .inner-callout {
+      border: 2px solid var(--ink);
+      border-radius: 10px;
+      padding: 14px 16px;
+      background: rgba(26,10,46,0.05);
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1.6;
+    }
+
+    /* ── Contact card ── */
+    .contact-card {
+      border: 4px solid var(--ink);
+      border-radius: 18px;
+      box-shadow: 6px 6px 0 var(--ink);
+      padding: 20px 22px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .contact-icon {
+      width: 48px;
+      height: 48px;
+      border: 3px solid var(--ink);
+      border-radius: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-icon.red    { background: var(--red); }
+    .contact-icon.purple { background: var(--purple); }
+
+    .contact-card-text p:first-child {
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .contact-card-text a {
+      color: var(--red);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .contact-card-text a:hover { text-decoration: underline; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 4px solid var(--ink);
+      padding: 22px 24px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 600;
+      opacity: 0.5;
+      letter-spacing: 0.04em;
+    }
+
+    footer a { color: var(--ink); }
+
+    /* ── Responsive ── */
+    @media (max-width: 540px) {
+      header { gap: 14px; }
+      .tab { font-size: 18px; padding: 14px 16px; }
+      .logo-mark { width: 56px; height: 56px; border-radius: 14px; }
+      .logo-t, .logo-d { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Header ── -->
+<header>
+  <div class="logo-mark">
+    <div class="logo-t">T</div>
+    <div class="logo-d">D</div>
+  </div>
+  <div class="header-text">
+    <h1>TRUTH OR DARE<em>:</em> SPICY EDITION</h1>
+    <p>LEGAL DOCUMENTS · RSIN LABS · EFFECTIVE JUNE 2025</p>
+  </div>
+</header>
+
+<!-- ── Tabs ── -->
+<div style="border-bottom:4px solid var(--ink)">
+  <div style="max-width:860px;margin:0 auto;padding:0 24px;display:flex">
+    <button class="tab active" onclick="show('privacy',this)">PRIVACY POLICY</button>
+    <button class="tab terms-tab" onclick="show('terms',this)">TERMS &amp; CONDITIONS</button>
+  </div>
+</div>
+
+<!-- ── Main ── -->
+<div class="wrap">
+
+
+  <!-- ════════════ PRIVACY POLICY ════════════ -->
+  <div id="privacy" class="panel active">
+
+    <div class="doc-meta">
+      <span class="chip chip-red">PRIVACY POLICY</span>
+      <span class="chip chip-ghost">EFFECTIVE: JUNE 1, 2025</span>
+      <span class="chip chip-ghost">LAST UPDATED: JUNE 1, 2025</span>
+    </div>
+
+    <div class="callout">
+      <strong>Plain English:</strong> We built this app to be fun, not to harvest your data. We collect the minimum necessary to run the game, serve ads to free users, and process purchases. We never sell your personal information.
+    </div>
+
+    <!-- 01 -->
+    <div class="section accent-red">
+      <div class="section-head">
+        <span class="section-num">01</span>
+        <span class="section-title">WHO WE ARE</span>
+      </div>
+      <div class="section-body">
+        <p>Truth or Dare: Spicy Edition ("the App") is developed and operated by <strong>RSin Labs</strong> ("we", "us", or "our"). For any privacy-related questions, reach us at <a href="mailto:rsinlabs@gmail.com">rsinlabs@gmail.com</a>.</p>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">02</span>
+        <span class="section-title">INFORMATION WE COLLECT</span>
+      </div>
+      <div class="section-body">
+        <p><strong>Information you provide</strong></p>
+        <ul>
+          <li><strong>Player names and avatars</strong> — entered during setup. Stored locally on your device only; never transmitted to our servers unless you create an online multiplayer room.</li>
+          <li><strong>Custom questions</strong> — stored locally on your device. Never synced to our servers.</li>
+        </ul>
+        <p><strong>Information collected automatically</strong></p>
+        <ul>
+          <li><strong>Anonymous authentication tokens</strong> — when you use online multiplayer, Firebase generates an anonymous identifier. No email, name, or account required.</li>
+          <li><strong>Game room data</strong> — room codes, player nicknames (not real names), and game state stored temporarily in Firebase and deleted when the session ends.</li>
+          <li><strong>Device and usage data</strong> — Google AdMob (free users) and Firebase may collect device identifiers, IP address, app usage patterns, and advertising identifiers per their own privacy policies.</li>
+          <li><strong>Purchase records</strong> — Google Play processes transactions. We receive only a purchase confirmation; we never see your card details.</li>
+        </ul>
+        <div class="inner-callout">
+          <strong>Note:</strong> We do not collect your real name, email, phone number, location, or contacts unless you voluntarily email us for support.
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">03</span>
+        <span class="section-title">HOW WE USE YOUR INFORMATION</span>
+      </div>
+      <div class="section-body">
+        <ul>
+          <li>To operate and improve the App's core features (offline and online gameplay)</li>
+          <li>To verify your premium purchase entitlement across reinstalls</li>
+          <li>To serve relevant advertisements to free users via Google AdMob</li>
+          <li>To maintain game room synchronisation in online multiplayer sessions</li>
+          <li>To respond to support requests you send us by email</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">04</span>
+        <span class="section-title">THIRD-PARTY SERVICES</span>
+      </div>
+      <div class="section-body">
+        <p>The App integrates third-party services with their own privacy policies. We encourage you to review them:</p>
+        <ul>
+          <li><strong>Google Firebase</strong> — anonymous auth, real-time database, remote config. <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">firebase.google.com/support/privacy</a></li>
+          <li><strong>Google AdMob</strong> — ad serving for free users. <a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener">AdMob Privacy</a></li>
+          <li><strong>Google Play In-App Purchases</strong> — payment processing. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
+        </ul>
+        <p>We do not share your data with any other third parties, and we do not sell your personal data.</p>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">05</span>
+        <span class="section-title">DATA RETENTION &amp; DELETION</span>
+      </div>
+      <div class="section-body">
+        <ul>
+          <li><strong>Local data</strong> (player names, custom questions, settings) — remains on your device until you uninstall or clear the App's data.</li>
+          <li><strong>Online game room data</strong> — automatically deleted from Firebase within 24 hours of the session ending.</li>
+          <li><strong>Anonymous Firebase UID</strong> — retained by Firebase per their retention policies. Request deletion by emailing us.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">06</span>
+        <span class="section-title">CHILDREN'S PRIVACY</span>
+      </div>
+      <div class="section-body">
+        <p>This App is rated <strong>18+ / Mature</strong> and is intended exclusively for adults. We do not knowingly collect data from anyone under the age of 18. If you believe a minor has used this App and provided personal data, contact us immediately so we can delete it.</p>
+      </div>
+    </div>
+
+    <!-- 07 -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">07</span>
+        <span class="section-title">ADVERTISING &amp; YOUR CHOICES</span>
+      </div>
+      <div class="section-body">
+        <p>Free users see interstitial ads served by Google AdMob. These ads may use your advertising identifier for personalisation. To opt out:</p>
+        <ul>
+          <li><strong>Android:</strong> Settings → Google → Ads → Opt out of Ads Personalisation</li>
+        </ul>
+        <p>Purchasing the premium version removes all ads permanently.</p>
+      </div>
+    </div>
+
+    <!-- 08 -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">08</span>
+        <span class="section-title">SECURITY</span>
+      </div>
+      <div class="section-body">
+        <p>We take reasonable technical measures to protect data in transit and at rest. Online game data is secured via Firebase's built-in security rules. However, no method of transmission or storage is 100% secure.</p>
+      </div>
+    </div>
+
+    <!-- 09 -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">09</span>
+        <span class="section-title">CHANGES TO THIS POLICY</span>
+      </div>
+      <div class="section-body">
+        <p>We may update this Privacy Policy from time to time. When we do, we will revise the "Last Updated" date above. Continued use of the App after changes are posted constitutes your acceptance.</p>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="section accent-red">
+      <div class="section-head">
+        <span class="section-num">10</span>
+        <span class="section-title">CONTACT US</span>
+      </div>
+      <div class="section-body">
+        <p>For any privacy questions, data deletion requests, or concerns:</p>
+        <div class="contact-card">
+          <div class="contact-icon red">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F0E8FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+          </div>
+          <div class="contact-card-text">
+            <p>RSin Labs — Privacy</p>
+            <p><a href="mailto:rsinlabs@gmail.com">rsinlabs@gmail.com</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /privacy -->
+
+
+  <!-- ════════════ TERMS & CONDITIONS ════════════ -->
+  <div id="terms" class="panel">
+
+    <div class="doc-meta">
+      <span class="chip chip-purple">TERMS &amp; CONDITIONS</span>
+      <span class="chip chip-ghost">EFFECTIVE: JUNE 1, 2025</span>
+      <span class="chip chip-ghost">LAST UPDATED: JUNE 1, 2025</span>
+    </div>
+
+    <div class="callout">
+      <strong>Please read carefully.</strong> By downloading or using Truth or Dare: Spicy Edition, you agree to be bound by these Terms &amp; Conditions. If you do not agree, do not use the App.
+    </div>
+
+    <!-- 01 -->
+    <div class="section accent-purple">
+      <div class="section-head">
+        <span class="section-num">01</span>
+        <span class="section-title">ACCEPTANCE OF TERMS</span>
+      </div>
+      <div class="section-body">
+        <p>These Terms &amp; Conditions ("Terms") govern your use of Truth or Dare: Spicy Edition (the "App"), published by RSin Labs ("we", "us", or "our"). By installing or using the App you confirm that you are at least 18 years old and agree to these Terms in full.</p>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">02</span>
+        <span class="section-title">ELIGIBILITY &amp; AGE RESTRICTION</span>
+      </div>
+      <div class="section-body">
+        <p>This App contains mature content and is strictly for users aged <strong>18 years or older</strong>. By using the App you represent that:</p>
+        <ul>
+          <li>You are at least 18 years of age (or the age of majority in your jurisdiction, if higher).</li>
+          <li>You have the legal capacity to enter into these Terms.</li>
+          <li>You will not allow anyone under 18 to access or use the App.</li>
+        </ul>
+        <p>We reserve the right to terminate access if we have reason to believe these requirements are not met.</p>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">03</span>
+        <span class="section-title">LICENCE TO USE</span>
+      </div>
+      <div class="section-body">
+        <p>We grant you a personal, non-exclusive, non-transferable, revocable licence to download and use the App for personal, non-commercial entertainment purposes, subject to these Terms.</p>
+        <p><strong>You may not:</strong></p>
+        <ul>
+          <li>Copy, modify, or distribute the App or its content</li>
+          <li>Reverse engineer, decompile, or disassemble the App</li>
+          <li>Use the App for any unlawful purpose</li>
+          <li>Remove any copyright, trademark, or proprietary notices</li>
+          <li>Attempt to gain unauthorised access to any part of the App or its servers</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">04</span>
+        <span class="section-title">PREMIUM PURCHASE</span>
+      </div>
+      <div class="section-body">
+        <ul>
+          <li>The App offers a one-time, non-consumable in-app purchase ("Premium") that removes advertisements and unlocks the WILD question category.</li>
+          <li>Purchases are processed by Google Play and subject to Google Play's Terms of Service.</li>
+          <li>Premium is tied to your Google Play account. Restore it on any device via the "Restore Purchase" option.</li>
+          <li><strong>Refunds:</strong> All purchases are final except as required by applicable law or Google Play's refund policy. We do not offer direct refunds — contact Google Play support for refund requests.</li>
+          <li>We reserve the right to modify pricing. Existing premium purchasers retain their entitlements.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">05</span>
+        <span class="section-title">ONLINE MULTIPLAYER</span>
+      </div>
+      <div class="section-body">
+        <ul>
+          <li>Online multiplayer requires an active internet connection and uses Firebase services.</li>
+          <li>Online sessions are temporary. Game room data is not permanently stored.</li>
+          <li>We are not responsible for gameplay disruptions caused by network instability, device disconnections, or Firebase service outages.</li>
+          <li>Do not share your room code with strangers if you wish to keep your session private.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">06</span>
+        <span class="section-title">USER-GENERATED CONTENT</span>
+      </div>
+      <div class="section-body">
+        <p>The App allows you to create custom questions ("User Content"). By adding User Content, you confirm that:</p>
+        <ul>
+          <li>Your content does not violate any law, including content that is defamatory, abusive, hateful, or harassing.</li>
+          <li>Your content does not infringe any third-party intellectual property rights.</li>
+          <li>You are solely responsible for any User Content you create.</li>
+        </ul>
+        <p>Custom questions are stored locally on your device and are not visible to us or other users.</p>
+      </div>
+    </div>
+
+    <!-- 07 -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">07</span>
+        <span class="section-title">ACCEPTABLE USE</span>
+      </div>
+      <div class="section-body">
+        <p>The App is intended for entertainment among consenting adults. You agree not to use the App to:</p>
+        <ul>
+          <li>Harass, pressure, or coerce other players</li>
+          <li>Create or share content that is illegal, harmful, or offensive</li>
+          <li>Interfere with the App's operation or security</li>
+          <li>Exploit bugs or vulnerabilities</li>
+        </ul>
+        <div class="inner-callout">
+          <strong>Remember:</strong> All gameplay, including dares, must be consensual. No dare obligation created within this App is legally binding or enforceable. Participation is always voluntary.
+        </div>
+      </div>
+    </div>
+
+    <!-- 08 -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">08</span>
+        <span class="section-title">INTELLECTUAL PROPERTY</span>
+      </div>
+      <div class="section-body">
+        <p>All content within the App — including but not limited to question text, graphics, sound effects, animations, the spin wheel, and the "T&amp;D" branding — is owned by RSin Labs or its licensors and is protected by applicable intellectual property laws.</p>
+        <p>Nothing in these Terms transfers any intellectual property rights to you.</p>
+      </div>
+    </div>
+
+    <!-- 09 -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">09</span>
+        <span class="section-title">DISCLAIMER OF WARRANTIES</span>
+      </div>
+      <div class="section-body">
+        <p>The App is provided on an <strong>"as is" and "as available"</strong> basis without warranties of any kind. We do not warrant that:</p>
+        <ul>
+          <li>The App will be uninterrupted, error-free, or bug-free</li>
+          <li>Any defects will be corrected</li>
+          <li>The App is free from viruses or harmful components</li>
+          <li>Online multiplayer sessions will remain stable at all times</li>
+        </ul>
+        <p>To the fullest extent permitted by law, we disclaim all implied warranties, including merchantability, fitness for a particular purpose, and non-infringement.</p>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">10</span>
+        <span class="section-title">LIMITATION OF LIABILITY</span>
+      </div>
+      <div class="section-body">
+        <p>To the maximum extent permitted by applicable law, RSin Labs shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from:</p>
+        <ul>
+          <li>Your use of or inability to use the App</li>
+          <li>Actions taken or not taken based on App content (including dares)</li>
+          <li>Unauthorised access to your data</li>
+          <li>Any third-party services used within the App</li>
+        </ul>
+        <p>Our total liability to you for any claim shall not exceed the amount you paid for the App (if any).</p>
+      </div>
+    </div>
+
+    <!-- 11 -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">11</span>
+        <span class="section-title">THIRD-PARTY SERVICES</span>
+      </div>
+      <div class="section-body">
+        <p>The App relies on third-party services (Google Firebase, Google AdMob, Google Play). Your use of these services is subject to their respective terms and privacy policies. We are not responsible for the practices, availability, or content of third-party services.</p>
+      </div>
+    </div>
+
+    <!-- 12 -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">12</span>
+        <span class="section-title">CHANGES TO THESE TERMS</span>
+      </div>
+      <div class="section-body">
+        <p>We may revise these Terms at any time. Updated Terms will be posted with a revised "Last Updated" date. Continued use of the App after changes constitutes acceptance of the new Terms.</p>
+      </div>
+    </div>
+
+    <!-- 13 -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-num">13</span>
+        <span class="section-title">GOVERNING LAW</span>
+      </div>
+      <div class="section-body">
+        <p>These Terms are governed by the laws of <strong>India</strong>. Any disputes arising from or relating to these Terms or the App shall be subject to the exclusive jurisdiction of the courts of India.</p>
+      </div>
+    </div>
+
+    <!-- 14 -->
+    <div class="section accent-purple">
+      <div class="section-head">
+        <span class="section-num">14</span>
+        <span class="section-title">CONTACT US</span>
+      </div>
+      <div class="section-body">
+        <p>For any questions or concerns about these Terms:</p>
+        <div class="contact-card">
+          <div class="contact-icon purple">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F0E8FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+          </div>
+          <div class="contact-card-text">
+            <p>RSin Labs — Legal</p>
+            <p><a href="mailto:rsinlabs@gmail.com" style="color:var(--purple)">rsinlabs@gmail.com</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /terms -->
+
+</div><!-- /wrap -->
+
+<footer>
+  © 2025 RSin Labs · Truth or Dare: Spicy Edition ·
+  <a href="mailto:rsinlabs@gmail.com">rsinlabs@gmail.com</a>
+</footer>
+
+<script>
+  function show(id, btn) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
