@@ -2,79 +2,316 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Your Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RsinLabs</title>
+  <meta name="description" content="RsinLabs — a small workshop for useful and silly apps." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Gloock&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --paper: #f3efe6;
+      --ink: #1c1b19;
+      --muted: #6f6a60;
+      --rule: #d9d2c3;
+      --hover: rgba(28, 27, 25, 0.04);
+      --grid: rgba(28, 27, 25, 0.045);
+      --accent: #c8402a;
+      --serif: "Gloock", Georgia, serif;
+      --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #161513;
+        --ink: #ece6d8;
+        --muted: #8f897c;
+        --rule: #2f2c27;
+        --hover: rgba(236, 230, 216, 0.035);
+        --grid: rgba(236, 230, 216, 0.035);
+        --accent: #e8664c;
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+
     body {
-      background-color: #111;
-      color: #eee;
-      font-family: system-ui, sans-serif;
-      padding: 40px;
-      max-width: 700px;
-      margin: auto;
+      margin: 0;
+      background-color: var(--paper);
+      background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 24px 24px;
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 15px;
       line-height: 1.6;
     }
 
-    a {
-      color: #7aa8ff;
+    a { color: inherit; }
+
+    .page {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 48px;
+      display: grid;
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: 72px;
+    }
+
+    /* ---------- left: sticky identity ---------- */
+    .side {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      padding: 40px 0;
+    }
+
+    .label {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .wordmark {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(56px, 6.4vw, 96px);
+      line-height: 0.9;
+      letter-spacing: -0.035em;
+      white-space: nowrap;
+      margin: auto 0 0;
+    }
+
+    .wordmark span { color: var(--accent); }
+
+    .contact .pitch {
+      font-family: var(--serif);
+      font-size: 20px;
+      line-height: 1.3;
+      max-width: 22ch;
+      margin: 8px 0 10px;
+    }
+
+    .tagline {
+      font-family: var(--serif);
+      font-size: clamp(22px, 2.1vw, 30px);
+      line-height: 1.25;
+      max-width: 17ch;
+      margin: 28px 0 0;
+    }
+
+    .contact {
+      margin-top: auto;
+      padding-top: 32px;
+    }
+
+    .mail {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 16px;
       text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 2px;
     }
 
-    a:hover {
-      text-decoration: underline;
+    .mail:hover { color: var(--accent); }
+
+    /* ---------- right: index ---------- */
+    .main { padding: 40px 0 48px; }
+
+    .head {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--ink);
     }
 
-    h2 {
-      margin-top: 2em;
-      color: #fff;
+    .log { list-style: none; margin: 0; padding: 0; }
+
+    .row {
+      display: grid;
+      grid-template-columns: 3em minmax(0, 1fr) auto;
+      align-items: baseline;
+      gap: 20px;
+      padding: 22px 12px;
+      margin: 0 -12px;
+      border-bottom: 1px solid var(--rule);
+      text-decoration: none;
+      transition: background-color 0.2s ease;
     }
 
-    ul {
-      padding-left: 20px;
+    a.row:hover, a.row:focus-visible { background-color: var(--hover); outline: none; }
+
+    .no { font-size: 12px; color: var(--muted); }
+
+    .name {
+      font-family: var(--serif);
+      font-size: clamp(22px, 2.3vw, 30px);
+      line-height: 1.15;
     }
 
-    li {
-      margin-bottom: 0.5em;
+    a.row .title::after {
+      content: "↗";
+      display: inline-block;
+      margin-left: 8px;
+      font-family: var(--mono);
+      font-size: 0.55em;
+      color: var(--accent);
+      vertical-align: 0.35em;
+      transition: transform 0.2s ease;
     }
 
+    a.row:hover .title::after { transform: translate(3px, -3px); }
+
+    .kind {
+      display: block;
+      margin-top: 6px;
+      font-family: var(--mono);
+      line-height: 1.5;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .kind.hint { color: var(--accent); }
+
+    .tag {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid currentColor;
+      padding: 1px 7px;
+      white-space: nowrap;
+    }
+
+    .tag.web { color: var(--accent); }
+
+    /* ---------- footer ---------- */
     footer {
-      margin-top: 3em;
-      font-size: 0.9em;
-      opacity: 0.7;
+      margin-top: 72px;
+      font-size: 12px;
+      color: var(--muted);
     }
 
-    .footer-links a {
-      margin-right: 15px;
+    .colophon {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 28px;
+      padding-top: 14px;
+      border-top: 1px solid var(--rule);
+    }
+
+    /* ---------- tablet / phone ---------- */
+    @media (max-width: 900px) {
+      .page {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 0 20px;
+      }
+
+      .side {
+        position: static;
+        height: auto;
+        padding: 28px 0 8px;
+      }
+
+      .wordmark { margin-top: 64px; font-size: clamp(48px, 17vw, 120px); }
+      .tagline { font-size: 24px; }
+      .contact { padding-top: 28px; }
+      .main { padding-top: 40px; }
+    }
+
+    @media (max-width: 560px) {
+      .row { grid-template-columns: 2.4em minmax(0, 1fr); gap: 12px; }
+      .tag { grid-column: 2; justify-self: start; margin-top: 4px; }
     }
   </style>
 </head>
 <body>
+<div class="page">
 
-<h1>Rsin</h1>
+  <aside class="side">
+    <div class="label">Independent app workshop</div>
 
-<p>I write code for mobile apps, because I get bored easily.</p>
-<p>If it looks cool and does something fun — I’m in.</p>
+    <h1 class="wordmark">Rsin<span>Labs</span></h1>
+    <p class="tagline">A small workshop for useful and silly apps.</p>
 
-<!--<h2>Writing</h2>-->
-<!--<ul>-->
-<!--  <li><a href="#">Why I Love Mobile Development</a></li>-->
-<!--  <li><a href="#">Helping People with Software</a></li>-->
-<!--  <li><a href="#">My Development Journey</a></li>-->
-<!--</ul>-->
+    <div class="contact">
+      <div class="label">Work with us</div>
+      <p class="pitch">Got an idea or want to build something together? Let’s talk.</p>
+      <a class="mail" href="mailto:rsinlabs@gmail.com">rsinlabs@gmail.com</a>
+    </div>
+  </aside>
 
-<h2>Code</h2>
-<ul>
-  <li><a href="https://pub.dev/packages/flutter_adsense_web">flutter_adsense_web</a></li>
-<!--   <li><a href="https://play.google.com/store/apps/details?id=com.rsin.strangerchat">random-chat-app</a></li> -->
-  <li><a href="https://play.google.com/store/apps/details?id=com.rsin.calculator">Not Just another calculator 😈 (hint: current_time (ex. 2110) -> C )</a></li>
-  <li><a href="https://expense.rsin.space">Expense Management</a></li>
-</ul>
+  <main class="main">
+    <div class="head label">
+      <span>Index</span>
+      <span>On Google Play</span>
+    </div>
 
-<footer class="footer-links">
-  <a href="https://github.com/Rahul7f">GitHub</a>
-  <a href="mailto:rsin7f@gmail.com">Contact</a>
+    <ol class="log">
+      <li>
+        <a class="row" href="https://play.google.com/store/apps/details?id=com.rsin.naam_jap_counter">
+          <span class="no">01</span>
+          <span class="name"><span class="title">Naam Jap Counter</span>
+            <span class="kind">a quiet mala counter for daily jaap</span>
+          </span>
+          <span class="tag">Android</span>
+        </a>
+      </li>
+      <li>
+        <a class="row" href="https://play.google.com/store/apps/details?id=com.rsin.anti_theft_alarm">
+          <span class="no">02</span>
+          <span class="name"><span class="title">Anti Theft Alarm</span>
+            <span class="kind">your phone shouts when someone touches it</span>
+          </span>
+          <span class="tag">Android</span>
+        </a>
+      </li>
+      <li>
+        <a class="row" href="https://play.google.com/store/apps/details?id=com.rsin.taskbell">
+          <span class="no">03</span>
+          <span class="name"><span class="title">Task Bell</span>
+            <span class="kind">reminders that actually ring</span>
+          </span>
+          <span class="tag">Android</span>
+        </a>
+      </li>
+      <li>
+        <a class="row" href="https://play.google.com/store/apps/details?id=com.rsin.daily_fitness">
+          <span class="no">04</span>
+          <span class="name"><span class="title">Weightly</span>
+            <span class="kind">a calm way to track your weight</span>
+          </span>
+          <span class="tag">Android</span>
+        </a>
+      </li>
+      <li>
+        <a class="row" href="https://play.google.com/store/apps/details?id=com.rsin.strangerchat">
+          <span class="no">05</span>
+          <span class="name"><span class="title">Stranger Chat</span>
+            <span class="kind">talk to someone new, at random</span>
+          </span>
+          <span class="tag">Android</span>
+        </a>
+      </li>
+    </ol>
 
-</footer>
+    <footer>
+      <div class="colophon">
+        <span>© 2026 RsinLabs</span>
+        <span>Built by hand, on purpose.</span>
+      </div>
+    </footer>
+  </main>
 
+</div>
 </body>
 </html>
