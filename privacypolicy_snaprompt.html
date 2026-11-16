@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Snaprompt Privacy Policy</title>
+<meta name="description" content="How the Snaprompt app handles your information.">
+<style>
+  :root { --bg:#fff; --fg:#1b1b1f; --muted:#5f6368; --accent:#5b45d6; --rule:#e4e4e9; --card:#f6f5fb; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#121216; --fg:#ececf1; --muted:#a0a3ab; --accent:#9d8cff; --rule:#2b2b33; --card:#1c1c23; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+  main { max-width:720px; margin:0 auto; padding:40px 16px 64px; }
+  h1 { font-size:2rem; line-height:1.2; margin:0 0 4px; }
+  h2 { font-size:1.2rem; margin:2.2em 0 .5em; padding-top:1.2em; border-top:1px solid var(--rule); }
+  p, li { margin:.6em 0; }
+  ul { padding-left:1.3em; }
+  .updated { color:var(--muted); margin:0 0 1.5em; }
+  .summary { background:var(--card); border-radius:12px; padding:4px 20px 8px; margin:1.5em 0; }
+  .summary h2 { border:0; padding:0; margin:.9em 0 .2em; }
+  a { color:var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Privacy policy</h1>
+  <p class="updated">Last updated: 15 November 2026</p>
+
+  <p>Snaprompt, developed by RsinLabs, is an independent app that shows photo prompts you can copy and use in AI apps. This page explains what information the app handles and why.</p>
+
+  <section class="summary">
+    <h2>The short version</h2>
+    <ul>
+      <li>You don't need an account, and there is no login.</li>
+      <li>Your favourites are stored on your phone.</li>
+      <li>We use Firebase Analytics and Firebase Crashlytics to understand how the app is used and to fix crashes.</li>
+      <li>We show ads from Google AdMob. Ads can use your advertising ID.</li>
+      <li>If you turn on notifications, we send them through Firebase Cloud Messaging.</li>
+    </ul>
+  </section>
+
+  <h2>What stays on your phone</h2>
+  <p>The app saves a few things on your phone so it works offline and remembers your choices:</p>
+  <ul>
+    <li>your favourites (a copy of each saved prompt, so the Saved page works without internet),</li>
+    <li>your theme choice (System, Light or Dark),</li>
+    <li>your notification setting,</li>
+    <li>whether you have seen the welcome screens,</li>
+    <li>your recent searches,</li>
+    <li>a few counters that decide when we show a review request or an ad.</li>
+  </ul>
+  <p>This information never leaves your phone through the app itself. Uninstalling Snaprompt deletes it.</p>
+
+  <h2>What we send to our servers</h2>
+  <p>The app reads prompts and categories from Google Cloud Firestore, and when you tap Copy, Open or Share it adds one to that prompt's public counter. These counters are not linked to you.</p>
+  <p>Preview images come from our server at snaprompt.rsin.online. Like any web server, it keeps basic request logs (such as the time, the IP address and the file requested). We use these logs to keep the service running and secure. We do not use them to identify you.</p>
+  <p>The app also downloads a few settings from Firebase Remote Config (for example how often ads may appear), so we can adjust the app without an update. This does not include personal information.</p>
+
+  <h2>Analytics and crash reports</h2>
+  <p>Firebase Analytics records anonymous events, such as opening a prompt or tapping Copy, so we can see what people use and what to improve.</p>
+  <p>Firebase Crashlytics sends a crash report when the app fails. It includes the device model, Android version, app version and technical details of the crash. It does not include your photos.</p>
+  <p>Google processes this data for Firebase under <a href="https://policies.google.com/privacy">Google's privacy policy</a>.</p>
+
+  <h2>Ads (Google AdMob)</h2>
+  <p>Snaprompt shows ads from Google AdMob. AdMob can use your advertising ID, a resettable identifier on your phone, together with information about your device, to show ads. Where the law requires it, such as in the EU and UK, we ask for your consent before personalised ads are shown. You can reset or delete your advertising ID in your phone's settings at any time.</p>
+
+  <h2>Notifications</h2>
+  <p>If you allow notifications, we send them with Firebase Cloud Messaging, for example when new prompts are added. You can turn them off in Settings in Snaprompt, or in your phone's notification settings.</p>
+
+  <h2>Children</h2>
+  <p>Snaprompt is not made for children under 13, and we do not knowingly collect information from children.</p>
+
+  <h2>Your choices</h2>
+  <ul>
+    <li>Remove a favourite by tapping the heart again.</li>
+    <li>Turn notifications off in Settings.</li>
+    <li>Reset or delete your advertising ID in your phone's settings.</li>
+    <li>Clear the app's data or uninstall it to delete everything stored on your phone.</li>
+  </ul>
+
+  <h2>Changes to this policy</h2>
+  <p>We may update this policy. When we do, we change the date at the top of this page.</p>
+
+  <h2>Contact</h2>
+  <p>Snaprompt is developed by RsinLabs. For privacy questions, email <a href="mailto:rsinlabs@gmail.com">rsinlabs@gmail.com</a>.</p>
+</main>
+</body>
+</html>
