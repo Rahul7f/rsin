@@ -1,115 +1,172 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Privacy Policy — Weightly</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy — Weight Tracker</title>
+  <meta name="description" content="Privacy policy for the Weight Tracker (Weightly) Android app. Your weight data stays on your device.">
   <style>
-    body { font-family: Inter, Roboto, Arial, sans-serif; color:#111; line-height:1.6; margin:0; padding:32px; background:#ffffff; }
-    .container { max-width:900px; margin:0 auto; }
-    h1, h2, h3 { color:#0b6b7a; }
-    p { margin:0 0 12px; }
-    ul { margin:6px 0 12px 20px; }
-    code { background:#f3f6f7; padding:2px 6px; border-radius:4px; font-family:monospace; }
-    .note { font-size:0.95rem; color:#555; }
-    .footer { margin-top:28px; font-size:0.9rem; color:#555; }
-    a { color:#0b6b7a; text-decoration:underline; }
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --border: #e2e8f0;
+      --accent: #4f46e5;
+      --accent-soft: #eef2ff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b1120;
+        --surface: #111827;
+        --text: #e5e7eb;
+        --muted: #9ca3af;
+        --border: #1f2937;
+        --accent: #818cf8;
+        --accent-soft: #1e1b4b;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      -webkit-text-size-adjust: 100%;
+    }
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 40px 16px 64px;
+    }
+    header { margin-bottom: 28px; }
+    .app { color: var(--accent); font-weight: 600; font-size: 14px; letter-spacing: .02em; text-transform: uppercase; margin: 0 0 6px; }
+    h1 { font-size: 32px; line-height: 1.2; margin: 0 0 8px; }
+    .meta { color: var(--muted); font-size: 14px; margin: 0; }
+    h2 { font-size: 20px; margin: 36px 0 10px; padding-top: 4px; }
+    h3 { font-size: 16px; margin: 20px 0 6px; }
+    p, li { color: var(--text); }
+    ul { padding-left: 22px; margin: 8px 0; }
+    li { margin: 6px 0; }
+    .summary {
+      background: var(--accent-soft);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 20px;
+    }
+    .summary h2 { margin-top: 0; }
+    .summary ul { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 15px; }
+    th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+    th { color: var(--muted); font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: .03em; }
+    .table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow-x: auto; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 1px 6px; word-break: break-word; }
+    a { color: var(--accent); }
+    footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+    @media (max-width: 480px) {
+      h1 { font-size: 26px; }
+      th, td { padding: 8px 10px; }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
+<main>
+  <header>
+    <p class="app">Weight Tracker (Weightly)</p>
     <h1>Privacy Policy</h1>
-  
+    <p class="meta">Effective date: November 21, 2026</p>
+  </header>
 
-    <p>This Privacy Policy describes how <strong>Weightly</strong> ("we", "our", or "the App") collects, uses, discloses, and protects information when you use our mobile application. Weightly is an offline-first personal weight tracker. Protecting your privacy is important to us — this policy explains what data is handled and how.</p>
+  <p>This policy explains how the Weight Tracker app for Android (also called Weightly, "the app") handles your information. In this policy, "we" and "us" mean the app's developer.</p>
 
-    <h2>1. Summary — key points</h2>
+  <section class="summary">
+    <h2>The short version</h2>
     <ul>
-      <li><strong>Offline by default:</strong> All weight entries and settings are stored locally on your device.</li>
-      <li><strong>No account required:</strong> Weightly does not require you to create an account or sign in.</li>
-      <li><strong>User-controlled backups:</strong> Backup and export features generate files you control (CSV/JSON). We do not receive these files.</li>
-      <li><strong>Optional features:</strong> Reminders (local notifications), in-app purchases (Premium), and third-party ads (AdMob) are optional. See details below.</li>
+      <li><strong>Your data stays on your phone.</strong> Everything you enter is stored only on your device.</li>
+      <li><strong>We collect nothing.</strong> The app has no account, no sign-in, no server, no analytics, no ads and no tracking.</li>
+      <li><strong>The app does not connect to the internet.</strong> It never sends your data to us or to anyone else.</li>
+      <li><strong>You're in control.</strong> Data only leaves your device if you back it up, export it or share it yourself.</li>
     </ul>
+  </section>
 
-    <h2>2. Information we collect</h2>
+  <h2>1. Information the app stores on your device</h2>
+  <p>To work, the app stores the following on your device:</p>
+  <ul>
+    <li><strong>Weight entries:</strong> each weight you log, the date and time it was logged, and any note you add.</li>
+    <li><strong>Settings:</strong> your weight unit (kg or lbs), theme, chart preferences and reminder schedule (time and days).</li>
+  </ul>
+  <p>This information is kept in the app's private storage, which other apps can't read. We never receive it.</p>
 
-    <h3>2.1 Information stored locally</h3>
-    <p>When you use Weightly, the following information is stored on your device:</p>
-    <ul>
-      <li><strong>Weight entries:</strong> recorded weight values, timestamps/dates, optional notes, and a unique local id for each entry.</li>
-      <li><strong>App settings:</strong> preferences such as display unit (kg/lb), chart color, reminder settings, and feature toggles.</li>
-      <li><strong>Local metadata:</strong> basic metadata needed to render charts and compute stats (e.g., entry count).</li>
-    </ul>
+  <h2>2. Information we collect</h2>
+  <p><strong>None.</strong> We do not collect, receive, store, sell or share any personal or health information. The app contains no analytics, advertising, crash-reporting or tracking software.</p>
 
-    <h3>2.2 Information created for backup/export</h3>
-    <p>When you use the built-in backup or export features, Weightly creates files (JSON or CSV) that you can save, share, or import back into the app. These files are created on your device and are not uploaded or sent to us by the app.</p>
-
-    <h3>2.3 Optional third-party data</h3>
-    <p>The app may optionally use third-party services (see section 6). These services may collect device or usage information as described by their own privacy policies.</p>
-
-    <h2>3. How we use information</h2>
-    <ul>
-      <li><strong>Core app functionality:</strong> Local data is used solely to provide the app’s features — display stats, charts, reminders, and enable backup/restore.</li>
-      <li><strong>Backups & exports:</strong> Files you create are for your own use. You control where they are saved or shared.</li>
-      <li><strong>Reminders:</strong> If you enable reminders, the app schedules local notifications on your device; notification settings are stored locally.</li>
-      <li><strong>Support & debugging:</strong> If you choose to report a bug, you may optionally include an exported file or logs; we will only receive data you explicitly share.</li>
-    </ul>
-
-    <h2>4. Sharing and disclosure</h2>
-    <p>We do <strong>not</strong> sell, rent, or share your personal data with third parties for marketing purposes. The only circumstances where data could be shared are:</p>
-    <ul>
-      <li>If you choose to export or share a backup/CSV file yourself.</li>
-      <li>If you explicitly send app logs, backups, or support data to us to help troubleshoot an issue.</li>
-      <li>When required by law or to respond to legal process.</li>
-    </ul>
-
-    <h2>5. Advertising & analytics (optional)</h2>
-    <p>If the app includes advertisements (for example, Google AdMob), those third-party providers may collect anonymous device and usage data to serve and personalize ads. If you enable or install a version of Weightly that uses ads, please review the ad provider's privacy policy for details. For Google, see: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy & Terms</a>.</p>
-
-    <h2>6. Third-party services</h2>
-    <p>Weightly may use third-party SDKs or platform services for:</p>
-    <ul>
-      <li>Advertising (e.g., Google Mobile Ads / AdMob)</li>
-      <li>In-app billing (Google Play Billing)</li>
-      <li>Local notifications (system notification APIs)</li>
-    </ul>
-    <p>Each third-party service has its own privacy policy. We recommend reviewing those policies for specifics about data collection and processing by those providers.</p>
-
-    <h2>7. Data retention</h2>
-    <p>Your data is stored on your device until you delete it or uninstall the app. Exported backups remain wherever you choose to save them (for example, cloud storage or local files). If you delete data within the app, it is removed from the device storage; however, previously exported files that you shared or saved are not deleted by the app.</p>
-
-    <h2>8. How to control, export, or delete your data</h2>
-    <ul>
-      <li><strong>Export/Backup:</strong> Use the app's Backup or Export to CSV feature to create files you can save or share.</li>
-      <li><strong>Restore:</strong> Use Restore or Import to load data from a previously created backup (JSON/CSV).</li>
-      <li><strong>Delete records:</strong> You can delete individual entries or use the "Delete all records" option to clear stored data. The app will ask for confirmation before permanent deletion.</li>
-    </ul>
-
-    <h2>9. Security</h2>
-    <p>We take reasonable technical precautions to protect data stored by the app on your device. However, no storage method is 100% secure. If you enable backups to cloud services yourself, security of those files depends on the service you use.</p>
-
-    <h2>10. Children's privacy</h2>
-    <p>Weightly is not directed to children under the age of 13. We do not knowingly collect data from children. If you are a parent or guardian and believe your child provided personal information to Weightly, please contact us and we will help remove that information.</p>
-
-    <h2>11. International transfers</h2>
-    <p>Because Weightly stores data locally on your device by default, cross-border transfer is controlled by your actions (e.g., if you share or upload a backup to a cloud provider). If third-party services are used (ads, billing), those services may transfer or process data internationally according to their own policies.</p>
-
-    <h2>12. Changes to this policy</h2>
-    <p>We may update this Privacy Policy from time to time. If we make material changes, we will update the effective date at the top of the page. Continued use of the app after changes indicates acceptance of the updated policy.</p>
-
-    <h2>13. Contact</h2>
-    <p>If you have questions, requests, or concerns about this Privacy Policy, please contact us at:</p>
-    <p><strong>Email:</strong> <a href="mailto:rsinlabs@gmail.com">rsinlabs@gmail.com</a></p>
-    <p class="note">Replace the email address above with your actual support or privacy contact before publishing.</p>
-
-    <div class="footer">
-      <p>&copy; <span id="year"></span> Weightly. All rights reserved.</p>
-    </div>
+  <h2>3. Permissions the app uses</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Permission</th><th>Why</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Notifications</td>
+          <td>Shows your weigh-in reminders. The app only asks for this when you turn reminders on, and you can turn it off at any time in Android settings.</td>
+        </tr>
+        <tr>
+          <td>Run at startup</td>
+          <td>Restores your reminder schedule after your phone restarts or the app is updated.</td>
+        </tr>
+        <tr>
+          <td>Vibration</td>
+          <td>Lets a reminder notification vibrate, if your phone's settings allow it.</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+  <p>The app does not access your contacts, location, camera, microphone, photos or other files. The only exception is a file you choose yourself when restoring a backup.</p>
 
-  <script>
-    // auto-update year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <h2>4. Reminders</h2>
+  <p>Reminders are scheduled by Android on your device. No information is sent anywhere to deliver them.</p>
+
+  <h2>5. Backup, restore and export</h2>
+  <ul>
+    <li><strong>Backup</strong> creates a file (<code>.json</code>) with your entries and settings. You choose where to save it using Android's file picker.</li>
+    <li><strong>Restore</strong> reads a backup file that you select and adds its entries to the app. It doesn't change your current settings.</li>
+    <li><strong>Export to CSV</strong> creates a spreadsheet file of your entries and opens Android's share menu. You choose which app, if any, receives it.</li>
+  </ul>
+  <p>Once you save or share a file, it is handled by the place or app you chose (for example, a cloud drive or email app) under that service's privacy policy. We never receive these files.</p>
+
+  <h2>6. Android device backup</h2>
+  <p>If you have turned on Android's built-in backup (for example, "Backup by Google One"), Android may include this app's data in your device backup, stored in your own Google account. This is managed by Android and Google, not by us, and you can turn it off in your phone's settings.</p>
+
+  <h2>7. Links that open outside the app</h2>
+  <p>The app has links to this policy and a "Report Bug" option. Tapping them opens your web browser or email app. If you send us an email, we receive only what you choose to include, such as your email address and message. We use it only to reply to you and fix the problem, and we delete it when it's no longer needed.</p>
+
+  <h2>8. Keeping and deleting your data</h2>
+  <ul>
+    <li>Your data stays on your device until you delete it.</li>
+    <li>To delete one entry, swipe it away in the Records list.</li>
+    <li>To delete everything, use <strong>Delete All Records</strong> in the app's menu, or uninstall the app.</li>
+    <li>Backup or export files you've saved elsewhere are not deleted by the app. Delete them yourself if you no longer need them.</li>
+  </ul>
+
+  <h2>9. Security</h2>
+  <p>Your data is stored in the app's private storage, protected by Android's app sandbox. If someone else can unlock your phone, they can open the app and see your entries. Keep your device locked and your backup files in a safe place.</p>
+
+  <h2>10. Children</h2>
+  <p>The app is not directed at children under 13. Because it collects no information, we do not knowingly collect personal information from anyone, including children.</p>
+
+  <h2>11. Health information</h2>
+  <p>Weight is personal health information. That's why the app keeps it only on your device and never transmits it. The app is a personal tracking tool. It is not a medical device and does not give medical advice.</p>
+
+  <h2>12. Changes to this policy</h2>
+  <p>If the app changes in a way that affects your privacy, for example by adding a new feature that uses the internet, we will update this policy and its effective date before that change is released.</p>
+
+  <h2>13. Contact</h2>
+  <p>Questions or requests about privacy? Email <a href="mailto:rsinlabs@gmail.com">rsinlabs@gmail.com</a>.</p>
+
+  <footer>
+    © 2026 Weight Tracker (Weightly). All rights reserved.
+  </footer>
+</main>
 </body>
 </html>
